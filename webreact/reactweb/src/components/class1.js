@@ -7,6 +7,7 @@ import logo from "./imagess/logo.png";
 import facebookicon from "./imagess/facebook.png";
 import gmialicon from "./imagess/gmail.png";
 import telephone from "./imagess/telephone-call.png";
+import powerponticon from "./imagess/powerpoint.png";
 function Allclass() {
   const [showArrow, setShowArrow] = useState(false);
   useEffect(() => {
@@ -516,7 +517,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -555,7 +556,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -594,7 +595,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -633,7 +634,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -672,7 +673,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -714,7 +715,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -753,7 +754,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -792,7 +793,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -831,7 +832,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -870,7 +871,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -909,7 +910,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -948,7 +949,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -987,7 +988,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1026,7 +1027,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1065,7 +1066,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1104,7 +1105,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1143,7 +1144,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1182,7 +1183,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1225,7 +1226,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1264,7 +1265,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1303,7 +1304,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1342,7 +1343,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1381,7 +1382,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1420,7 +1421,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1459,7 +1460,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1498,7 +1499,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1537,7 +1538,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1576,7 +1577,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">
@@ -1615,7 +1616,7 @@ function Allclass() {
                   <div className="div-under">
                     <div className="placetodown">
                       <div className="iconimg">
-                        <img src="powerpoint.png" alt="" />
+                        <img src={powerponticon} alt="" />
                       </div>
                       <div className="nexttoicon">
                         <div className="wo">

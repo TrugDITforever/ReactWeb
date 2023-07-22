@@ -8,6 +8,7 @@ body {
   scroll-behavior: smooth;
 }
 .infor {
+  /* z-index: -1; */
   width: 64%;
 }
 .wordsources {

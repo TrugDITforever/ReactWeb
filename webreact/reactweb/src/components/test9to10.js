@@ -287,7 +287,6 @@ function Test9to10() {
                 </div>
               </div>
             </div>
-            s
           </div>
 
           <div className="last">
