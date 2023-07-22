@@ -129,7 +129,10 @@ html {
   }
 }
 .fa-solid {
-  font-size: larger;
+  font-size: large;
+}
+.fa-arrow-up {
+  font-size: xx-large;
 }
 .arr li:nth-child(1) {
   color: rgb(193, 193, 4);

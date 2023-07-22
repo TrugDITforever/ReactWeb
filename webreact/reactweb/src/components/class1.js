@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./class1.css";
 import Navbar from "./Navbar";
-import AppearforLoginAndSignup from "./funtionforsignupAndlogin";
+import {
+  AppearforLoginAndSignup,
+  Creategrpinterfaces,
+} from "./funtionforsignupAndlogin";
 import Listmenu from "./tabmain";
 import logo from "./imagess/logo.png";
 import facebookicon from "./imagess/facebook.png";
@@ -22,20 +25,29 @@ function Allclass() {
         setShowArrow(false);
       }
     };
-
     infor.addEventListener("scroll", handleScroll);
-
     return () => {
       infor.removeEventListener("scroll", handleScroll);
     };
   });
-  const { formappear, signupappear, clickappear, clickappear2, closeform } =
-    AppearforLoginAndSignup();
+  const {
+    formappear,
+    signupappear,
+    Creategrp,
+    clickappear,
+    clickappear2,
+    clickappear3,
+    closeform,
+  } = AppearforLoginAndSignup();
   return (
     <div className="Allclass">
       <Navbar></Navbar>
       <div className="container">
-        <div className="ads"></div>
+        <div
+          className={`ads ${
+            formappear || signupappear || Creategrp ? "active" : ""
+          }`}
+        ></div>
 
         <div className="main">
           {showArrow && (
@@ -93,7 +105,7 @@ function Allclass() {
                     </a>
                   </div>
 
-                  <div className="cources">
+                  <div className="cources" style={{ display: "block" }}>
                     <div className="courseinfor">
                       <div className="inforpart">
                         <a href="#th">
@@ -1648,40 +1660,7 @@ function Allclass() {
             </div>
           </div>
           <div className="last">
-            <div className="create">
-              <p>Tạo nhóm để học cùng nhau nhé!!!</p>
-              <button className="btngroup">
-                <a>
-                  <img src="plus.png" alt="" />
-                  Tạo Nhóm
-                </a>
-              </button>
-              <p>Nhóm phổ biến gần đây.</p>
-            </div>
-            <div className="group-main">
-              <div className="group">
-                <div className="group-img">
-                  <img
-                    src="https://xcdn-cf.vuihoc.vn/upload/5c209fe6176b0/2022/04/06/097a_khoi-d-gom-nhung-nganh-nao-1.png"
-                    alt=""
-                  />
-                </div>
-                <div className="gr-btn">
-                  <button>Tham Gia Ngay</button>
-                </div>
-              </div>
-              <div className="group">
-                <div className="group-img">
-                  <img
-                    src="https://static.ybox.vn/2020/12/1/1607335958957-lam-viec-nhom-hieu-qua.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="gr-btn">
-                  <button>Tham Gia Ngay</button>
-                </div>
-              </div>
-            </div>
+            <Creategrpinterfaces></Creategrpinterfaces>
           </div>
           <div className="alert">
             <div className="alertword">
@@ -1806,38 +1785,44 @@ function Allclass() {
               </div>
             </div>
           )}
-          <div className="group-create">
-            <i className="fa-solid fa-circle-xmark" id="close3"></i>
-            <form>
-              <h4
-                style={{
-                  margin: "0px",
-                  padding: "4px 0",
-                  color: "#4285f4",
-                  fontSize: "24px",
-                  fontWeight: "700",
-                  textTransform: "uppercase",
-                }}
-              >
-                TẠO NHÓM
-              </h4>
-              <div className="login-form" id="loginform">
-                <label for="username">Tên Nhóm:</label>
-                <input type="text" id="username" name="username" required />
-                <label for="decrip">Mô tả:</label>
-                <input type="text" id="decrip" name="decrip" required />
-                <label for="decrip">Thành viên:</label>
-                <input
-                  type="text"
-                  id="decrip"
-                  name="decrip"
-                  required
-                  placeholder="Nhập email của thành viên"
-                />
-              </div>
-              <input id="login-btn" type="submit" value="Tạo Nhóm" />
-            </form>
-          </div>
+          {Creategrp && (
+            <div className="group-create">
+              <i
+                className="fa-solid fa-circle-xmark"
+                id="close3"
+                onClick={closeform}
+              ></i>
+              <form>
+                <h4
+                  style={{
+                    margin: "0px",
+                    padding: "4px 0",
+                    color: "#4285f4",
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  TẠO NHÓM
+                </h4>
+                <div className="login-form" id="loginform">
+                  <label for="username">Tên Nhóm:</label>
+                  <input type="text" id="username" name="username" required />
+                  <label for="decrip">Mô tả:</label>
+                  <input type="text" id="decrip" name="decrip" required />
+                  <label for="decrip">Thành viên:</label>
+                  <input
+                    type="text"
+                    id="decrip"
+                    name="decrip"
+                    required
+                    placeholder="Nhập email của thành viên"
+                  />
+                </div>
+                <input id="login-btn" type="submit" value="Tạo Nhóm" />
+              </form>
+            </div>
+          )}
         </div>
         <footer>
           <div className="footer" id="footer">

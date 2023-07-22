@@ -1000,7 +1000,6 @@ h5 {
   background-color: #eee;
   border: 1px solid #ccc;
   padding: 20px;
-  display: none;
   height: 380px;
   z-index: 15;
   width: 400px;
@@ -1091,7 +1090,7 @@ h5 {
   color: darkorange;
 }
 .login-form {
-  margin-top: 80px;
+  margin-top: 73px;
 }
 .login-form input {
   outline: none;

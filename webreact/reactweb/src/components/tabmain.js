@@ -104,7 +104,9 @@ function Listmenu() {
               </a>
             </li>
             <li>
-              <a href="12toCollege.html">Đề thi THPT quốc gia</a>
+              <a href="">
+                <Link to="/collegetest">Đề thi THPT quốc gia</Link>
+              </a>
             </li>
           </ul>
         </div>
