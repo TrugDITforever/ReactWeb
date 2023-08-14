@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./style.css";
 import logo from "./imagess/logo.png";
 
 import { Link } from "react-router-dom";
+import { Appcontext } from "./Contexxt/Appcontext";
 function Navbars() {
+  const { account, setaccoutname } = useContext(Appcontext);
+  useEffect(() => {
+    // Kiểm tra nếu có giá trị account trong localStorage
+    const localStorageAccount = localStorage.getItem("account");
+    if (localStorageAccount === "true") {
+      setaccoutname(true);
+    } else if (localStorageAccount === "false") {
+      setaccoutname(false);
+    }
+  }, []);
   return (
     <div>
       <header className="head">
@@ -23,26 +34,32 @@ function Navbars() {
           <div className="tabmenu">
             <ul id="listmainmenu">
               <li>
-                <a href="">
-                  <Link to="/">HỎI & ĐÁP</Link>
-                </a>
+                <Link to="/">Hỏi & Đáp</Link>
               </li>
               <li>
-                <a href="">
-                  <Link to="/allcources">Lộ Trình Học</Link>
-                </a>
-              </li>
-
-              <li>
-                <a href=""> Hướng dẫn thêm </a>
+                <Link to="/allcources">Giáo Án</Link>
               </li>
               <li>
-                <a href=""> Liên hệ</a>
+                <Link to="/bookstore">Cửa Hàng</Link>
               </li>
+              <li>
+                <Link to="/introduce">Giới Thiệu</Link>
+              </li>
+              {/* <li>
+                <a href="#"> Liên hệ</a>
+              </li> */}
+              {account && (
+                <li>
+                  <Link to="/userinfo">
+                    <i class="fa-regular fa-circle-user"></i>
+                    Tài khoản
+                  </Link>
+                </li>
+              )}
             </ul>
-            <div className="mobbilebtn">
+            {/* <div className="mobbilebtn">
               <i className="fa-solid fa-bars"></i>
-            </div>
+            </div> */}
           </div>
         </section>
       </header>

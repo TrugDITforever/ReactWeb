@@ -14,8 +14,7 @@ html {
   width: 100%;
   height: auto;
 }
-.wordd h1,
-p {
+.wordd h1 p {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   padding-left: 20px;
@@ -252,7 +251,7 @@ p {
 .loginbtnn {
   text-align: center;
 }
-.ads {
+/* .ads {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -265,7 +264,7 @@ p {
   opacity: 0.9;
   z-index: 10;
   background-color: #0e0d0d6d;
-}
+} */
 @media screen and (max-width: 767px) {
   .box {
     width: 80%;

@@ -1,40 +1,15 @@
-import React, { useState, useEffect } from "react";
-export function AppearforLoginAndSignup() {
-  const [formappear, setupdateCLick] = useState(false);
-  const [signupappear, setupdateCLick2] = useState(false);
-  const [Creategrp, setupdateCLick3] = useState(false);
-  const clickappear = () => {
-    setupdateCLick(true);
-    setupdateCLick2(false);
-  };
-  const clickappear2 = () => {
-    setupdateCLick(false);
-    setupdateCLick2(true);
-  };
-  const clickappear3 = () => {
-    setupdateCLick(false);
-    setupdateCLick2(false);
-    setupdateCLick3(true);
-  };
-  const closeform = () => {
-    setupdateCLick(false);
-    setupdateCLick2(false);
-    setupdateCLick3(false);
-  };
-  return {
-    formappear,
-    signupappear,
-    Creategrp,
-    clickappear,
-    clickappear2,
-    clickappear3,
-    closeform,
-  };
-}
+import React, { useState, useEffect, useContext } from "react";
+import { Appcontext } from "./Contexxt/Appcontext";
+import { Link } from "react-router-dom";
 
 export function Creategrpinterfaces() {
-  const { clickappear3, closeform, Creategrp, setupdateCLick3 } =
-    AppearforLoginAndSignup();
+  const { Creategrp, setupdateCLick3 } = useContext(Appcontext);
+  const clickappear4 = () => {
+    setupdateCLick3(true);
+  };
+  const closeform2 = () => {
+    setupdateCLick3(false);
+  };
   const [inputcre, updateCre] = useState("");
   const [getlink, setLink] = useState("");
   const [getnames, setname] = useState([]);
@@ -46,22 +21,20 @@ export function Creategrpinterfaces() {
   };
   const createNew = (event) => {
     event.preventDefault();
+    const newname = { name: inputcre };
     if (inputcre.trim() !== "") {
-      setname((Newname) => [
-        ...Newname,
-        { id: getnames.length + 1, name: inputcre },
-      ]);
+      setname([newname, ...getnames]);
     }
     setLink("");
     updateCre("");
-    closeform();
+    closeform2();
   };
   return (
     <div className="cre">
       <div>
         <div className="create">
           <p>Tạo nhóm để học cùng nhau nhé!!!</p>
-          <button className="btngroup" onClick={clickappear3}>
+          <button className="btngroup" onClick={clickappear4}>
             <a>
               <img src="plus.png" alt="" />
               Tạo Nhóm
@@ -93,8 +66,8 @@ export function Creategrpinterfaces() {
             </div>
           </div>
           <p>Nhóm mới gần đây:</p>
-          {getnames.map((getname) => (
-            <div key={getname.id} className="group">
+          {getnames.map((getname, index) => (
+            <div key={index} className="group">
               <div className="group-img">
                 <p style={{ margin: "0px" }}>{getname.name}</p>
                 <img src={getlink} alt="" />
@@ -106,13 +79,12 @@ export function Creategrpinterfaces() {
           ))}
         </div>
       </div>
-
       {Creategrp && (
         <div className="group-create">
           <i
             className="fa-solid fa-circle-xmark"
             id="close3"
-            onClick={closeform}
+            onClick={closeform2}
           ></i>
           <form onSubmit={createNew}>
             <h4
@@ -159,6 +131,222 @@ export function Creategrpinterfaces() {
           </form>
         </div>
       )}
+    </div>
+  );
+}
+export function Ads() {
+  const { formappear, signupappear, Creategrp } = useContext(Appcontext);
+  return (
+    <div>
+      <div
+        className={`ads ${
+          formappear || signupappear || Creategrp ? "active" : ""
+        }`}
+      ></div>
+    </div>
+  );
+}
+export function BtnLoginSignup() {
+  const { formappear, signupappear, setupdateCLick, setupdateCLick2 } =
+    useContext(Appcontext);
+  const { appear, setappear, setaccoutname } = useContext(Appcontext);
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  useEffect(() => {
+    const localappear = localStorage.getItem("appear");
+    if (localappear === "false") {
+      setappear(false);
+    } else setappear(true);
+  });
+  const handleSubmitlogin = (event) => {
+    event.preventDefault();
+    if (username === "trung" && password === "123") {
+      setpassword("");
+      setusername("");
+      setappear(false);
+      localStorage.setItem("appear", false);
+      setupdateCLick(false);
+      setaccoutname(true);
+      localStorage.setItem("account", true);
+    }
+  };
+  const clickappear = () => {
+    setupdateCLick(true);
+    setupdateCLick2(false);
+  };
+  const closeform = () => {
+    setupdateCLick(false);
+    setupdateCLick2(false);
+  };
+  const clickappear2 = () => {
+    setupdateCLick(false);
+    setupdateCLick2(true);
+  };
+  return (
+    <div>
+      {appear && (
+        <div className="login-place" id="login-place">
+          <div className="word">
+            <p>
+              Hãy tham gia vào để trở thành thành viên của
+              <strong>LEARN X2</strong> <br />
+              và tham gia hỏi đáp cùng các bạn khác!!!
+              <br />
+            </p>
+          </div>
+          <div className="login">
+            <button id="btn" onClick={clickappear}>
+              Đăng nhập
+            </button>
+            <button id="btn2" onClick={clickappear2}>
+              Đăng kí
+            </button>
+          </div>
+        </div>
+      )}
+
+      {formappear && (
+        <div className="Page-login">
+          <i
+            className="fa-solid fa-circle-xmark"
+            onClick={closeform}
+            id="close"
+          ></i>
+          <form id="loginform" onSubmit={handleSubmitlogin}>
+            <h4
+              style={{
+                margin: "0px",
+                padding: "4px 0",
+                color: "#4285f4",
+                fontSize: "24px",
+                fontWeight: "700",
+                textTransform: "uppercase",
+              }}
+            >
+              ĐĂNG NHẬP
+            </h4>
+            <div className="login-form" id="loginform">
+              <label for="username">Tên đăng nhập:</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                onChange={(e) => setusername(e.target.value)}
+                required
+              />
+              <label for="password">Mật khẩu:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
+                required
+              />
+            </div>
+            <input
+              id="login-btn"
+              className="loginbtnnn"
+              type="submit"
+              value="Đăng nhập"
+            />
+          </form>
+          <div className="NOacc">
+            <p>
+              Chưa có tài khoản?{" "}
+              <span id="movetosignup" onClick={clickappear2}>
+                Đăng kí
+              </span>
+            </p>
+          </div>
+          <div className="other-option">
+            <ul>
+              <li>
+                <a href="">
+                  <i className="fa-brands fa-facebook fa-2xl"></i>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i className="fa-brands fa-google-plus fa-2xl"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+      {signupappear && (
+        <div className="Page-signup">
+          <i
+            className="fa-solid fa-circle-xmark"
+            id="close2"
+            onClick={closeform}
+          ></i>
+          <form className="signupform">
+            <h4
+              style={{
+                margin: "0px",
+                padding: "4px 0",
+                color: "#4285f4",
+                fontSize: "24px",
+                fontWeight: "700",
+                textTransform: "uppercase",
+              }}
+            >
+              ĐĂNG KÍ
+            </h4>
+            <div className="login-form" id="signupform">
+              <label for="username2">Tên đăng nhập:</label>
+              <input type="text" id="username2" name="username2" required />
+              <label for="password2">Mật khẩu:</label>
+              <input type="password" id="password2" name="password2" required />
+              <label for="password3">Xác nhận pass:</label>
+              <input type="password" id="password3" name="password3" required />
+              <label for="password4">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <input id="login-btn2" type="submit" value="Đăng kí" />
+          </form>
+          <div className="Hasacc">
+            <p>
+              Đã có tài khoản{" "}
+              <span id="btnmovetologin" onClick={clickappear}>
+                Đăng nhập
+              </span>
+            </p>
+          </div>
+          <div className="other-option">
+            <ul>
+              <li>
+                <a href="">
+                  <i className="fa-brands fa-facebook fa-2xl"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+export function BtnLogout() {
+  const { setaccoutname, setappear } = useContext(Appcontext);
+  const Logoutclick = () => {
+    setaccoutname(false);
+    setappear(true);
+    localStorage.setItem("appear", "true");
+    localStorage.setItem("account", false);
+  };
+  return (
+    <div className="Logoutplace">
+      <Link to="/">
+        {" "}
+        <p onClick={Logoutclick}>
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Log out
+        </p>
+      </Link>
     </div>
   );
 }

@@ -6,17 +6,17 @@ function Post() {
   const [comments, commentUpdate] = useState([]);
   const handleCreateComment = () => {
     if (searchvalue.trim() !== "") {
-      commentUpdate((prevComments) => [
-        ...prevComments,
-        { id: comments.length + 1, name: "Linh", content: searchvalue },
-      ]);
+      const newComment = {
+        name: "NO Name",
+        content: searchvalue,
+      };
+      commentUpdate([newComment, ...comments]);
       searchvalueUpdate("");
     }
   };
   const handleclick = (e) => {
     searchvalueUpdate(e.target.value);
   };
-
   const searchvalelenght = searchvalue.length > 0;
   return (
     <div>
@@ -32,8 +32,8 @@ function Post() {
           <button onClick={handleCreateComment}>Đăng</button>
         )}
       </div>
-      {comments.map((comment) => (
-        <div key={comment.id} className="people-cmt">
+      {comments.map((comment, index) => (
+        <div key={index} className="people-cmt">
           <div>
             <img src={users} alt="" />
           </div>

@@ -5,8 +5,11 @@ import Test from "./components/testforcouces";
 import Allclass from "./components/class1";
 import Test9to10 from "./components/test9to10";
 import CollegeTest from "./components/college.js";
+import BookStrore from "./components/bookstore";
 // import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Introduce from "./components/introduce";
+import Userinfo from "./components/userinfo";
 const root = document.getElementById("root");
 const router = createBrowserRouter([
   {
@@ -29,5 +32,14 @@ const router = createBrowserRouter([
     path: "collegetest",
     element: <CollegeTest />,
   },
+  {
+    path: "introduce",
+    element: <Introduce />,
+  },
+  {
+    path: "userinfo",
+    element: <Userinfo />,
+  },
+  { path: "bookstore", element: <BookStrore /> },
 ]);
 ReactDOM.render(<RouterProvider router={router} />, root);

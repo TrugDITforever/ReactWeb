@@ -1,0 +1,236 @@
+.InterfaceBookStore {
+  width: 100%;
+  display: flex;
+  margin-top: 136px;
+}
+.LeftMenu {
+  width: 15%;
+  height: 625px;
+  border-right: 1px solid #eee;
+}
+.RightMenu {
+  width: 85%;
+}
+.BookMenu {
+  width: 100%;
+  height: auto;
+}
+.Iconbook p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+}
+.Iconbook span {
+  font-weight: 400;
+  text-shadow: 4px 6px 8px black;
+}
+.Iconbook i {
+  padding-right: 10px;
+  color: rgb(24, 147, 147);
+  font-size: 2rem;
+}
+.ListnameMenu {
+  margin-top: 35px;
+}
+.ListnameMenu a {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+.ListnameMenu a:hover {
+  cursor: pointer;
+  color: rgb(21, 149, 149);
+}
+.ListnameMenu ul {
+  margin-left: 10px;
+}
+.ListnameMenu li {
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+}
+.ListnameMenu li:hover {
+  border-right: 3px solid rgb(201, 201, 53);
+  cursor: pointer;
+  color: rgb(21, 149, 149);
+}
+.BookMenu {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.IconShopping {
+  margin-top: 10px;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.PlaceForBook {
+  margin-top: 5px;
+}
+.Searching {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: auto;
+}
+.placeforiconandnumber {
+  position: relative;
+  width: 3%;
+  height: 10%;
+  margin-top: 1.2rem;
+  /* left: 25%; */
+}
+.placeforiconandnumber i {
+  font-size: x-large;
+  color: rgb(34, 34, 99);
+}
+.numberShop {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -10px;
+  right: 0;
+  border-radius: 50%;
+  margin: 0;
+  text-align: center;
+  width: 10px;
+  height: 10px;
+  padding: 5px 5px;
+  background-color: rgb(211, 184, 184);
+}
+.SearchBook {
+  display: flex;
+  width: 100%;
+}
+.SearchBook input {
+  margin-left: 20rem;
+  width: 40%;
+  height: 1.5rem;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+  outline: none;
+}
+.SearchBook button {
+  color: #eee;
+  border-radius: 0px 10px 10px 0px;
+  background-color: rgb(89, 89, 232);
+  width: 12%;
+  padding: 10px;
+  height: 2.87rem;
+  transition: all 0.2s linear;
+}
+.SearchBook button:hover {
+  color: rgb(108, 97, 97);
+  cursor: pointer;
+  background-color: aqua;
+}
+.Product {
+  width: 100%;
+  height: 550px;
+  overflow: auto;
+}
+.ImgStart {
+  position: relative;
+  margin-top: 30px;
+  margin-left: 150px;
+  width: 80%;
+  height: 300px;
+  background-image: url(https://innhanhsieuviet.com/wp-content/uploads/2021/04/in-poster-quang-cao.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+.DivforBook {
+  width: 100%;
+  height: auto;
+}
+.PlaceForTh {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.PlaceForThcs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.BookBox {
+  margin: 1rem 0 2rem 3rem;
+  width: 20%;
+  height: 350px;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  /* box-shadow: 9px 9px 12px #ccc, -9px -9px 12px #ccc; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.ImgBook {
+  position: relative;
+  width: 100%;
+  /* height: 300px; */
+}
+.ForImg {
+  width: 100%;
+}
+.ForImg img {
+  border-radius: 15px;
+  width: 100%;
+  height: 270px;
+}
+.ImgBook:hover .BtnBuyAndAdd {
+  cursor: pointer;
+  opacity: 1;
+  height: auto;
+}
+.BtnBuyAndAdd {
+  opacity: 0;
+  bottom: 10px;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+.BtnBuyAndAdd button:nth-child(1) {
+  position: relative;
+  background-color: rgb(31, 191, 191);
+  color: #eee;
+  border: none;
+  float: left;
+  padding: 10px 15px;
+  margin-right: 0px;
+}
+.BtnBuyAndAdd button:nth-child(2) {
+  background-color: black;
+  color: #eee;
+  border: none;
+  float: left;
+  padding: 10px 10px;
+  margin-left: 35px;
+}
+.BtnBuyAndAdd button:nth-child(1):hover {
+  cursor: pointer;
+  background-color: rgb(123, 182, 202);
+}
+.BtnBuyAndAdd button:nth-child(2):hover {
+  cursor: pointer;
+  background-color: rgb(76, 80, 81);
+}
+.PriceAndWord p {
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  text-align: center;
+  color: rgb(41, 163, 163);
+}
+.PriceAndWord h4 {
+  line-height: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

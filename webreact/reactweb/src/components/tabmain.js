@@ -119,63 +119,43 @@ function Listmenu() {
         <div className="liststudy3">
           <ul>
             <li>
-              <a href="">
-                <Link to="/test">TOÁN</Link>
-              </a>
+              <Link to="/test">TOÁN</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">VĂN</Link>
-              </a>
+              {" "}
+              <Link to="/test">VĂN</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">TIẾNG VIỆT</Link>
-              </a>
+              {" "}
+              <Link to="/test">TIẾNG VIỆT</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">ANH</Link>
-              </a>
+              {" "}
+              <Link to="/test">ANH</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">VẬT LÍ</Link>
-              </a>
+              {" "}
+              <Link to="/test">VẬT LÍ</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">HÓA HỌC</Link>
-              </a>
+              {" "}
+              <Link to="/test">HÓA HỌC</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">SINH HỌC</Link>
-              </a>
+              {" "}
+              <Link to="/test">SINH HỌC</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">LỊCH SỬ</Link>
-              </a>
+              {" "}
+              <Link to="/test">LỊCH SỬ</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">ĐỊA LÍ</Link>
-              </a>
+              {" "}
+              <Link to="/test">ĐỊA LÍ</Link>
             </li>
             <li>
-              <a href="">
-                {" "}
-                <Link to="/test">GIÁO DỤC CÔNG DÂN</Link>
-              </a>
+              {" "}
+              <Link to="/test">GIÁO DỤC CÔNG DÂN</Link>
             </li>
           </ul>
         </div>
