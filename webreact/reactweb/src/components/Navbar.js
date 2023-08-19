@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./style.css";
+import "./Cssfile/style.css";
 import logo from "./imagess/logo.png";
 
 import { Link } from "react-router-dom";
@@ -34,20 +34,41 @@ function Navbars() {
           <div className="tabmenu">
             <ul id="listmainmenu">
               <li>
-                <Link to="/">Hỏi & Đáp</Link>
+                <Link to="/">
+                  <i
+                    class="fa-regular fa-circle-question"
+                    style={{ color: "#5C5470" }}
+                  ></i>
+                  Hỏi & Đáp
+                </Link>
               </li>
               <li>
-                <Link to="/allcources">Giáo Án</Link>
+                <Link to="/allcources">
+                  <i
+                    class="fa-regular fa-file-lines"
+                    style={{ color: "#5C5470" }}
+                  ></i>
+                  Giáo Án
+                </Link>
               </li>
               <li>
-                <Link to="/bookstore">Cửa Hàng</Link>
+                <Link to="/bookstore">
+                  <i
+                    class="fa-solid fa-cart-flatbed"
+                    style={{ color: "#5C5470" }}
+                  ></i>
+                  Cửa Hàng
+                </Link>
               </li>
               <li>
-                <Link to="/introduce">Giới Thiệu</Link>
+                <Link to="/introduce">
+                  <i
+                    class="fa-solid fa-door-open"
+                    style={{ color: "#5C5470" }}
+                  ></i>
+                  Giới Thiệu
+                </Link>
               </li>
-              {/* <li>
-                <a href="#"> Liên hệ</a>
-              </li> */}
               {account && (
                 <li>
                   <Link to="/userinfo">
@@ -57,9 +78,6 @@ function Navbars() {
                 </li>
               )}
             </ul>
-            {/* <div className="mobbilebtn">
-              <i className="fa-solid fa-bars"></i>
-            </div> */}
           </div>
         </section>
       </header>

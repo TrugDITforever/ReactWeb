@@ -25,7 +25,7 @@ export function Creategrpinterfaces() {
     if (inputcre.trim() !== "") {
       setname([newname, ...getnames]);
     }
-    setLink("");
+    // setLink("");
     updateCre("");
     closeform2();
   };
@@ -36,7 +36,7 @@ export function Creategrpinterfaces() {
           <p>Tạo nhóm để học cùng nhau nhé!!!</p>
           <button className="btngroup" onClick={clickappear4}>
             <a>
-              <img src="plus.png" alt="" />
+              <i class="fa-solid fa-circle-plus"></i>
               Tạo Nhóm
             </a>
           </button>
@@ -69,8 +69,12 @@ export function Creategrpinterfaces() {
           {getnames.map((getname, index) => (
             <div key={index} className="group">
               <div className="group-img">
-                <p style={{ margin: "0px" }}>{getname.name}</p>
-                <img src={getlink} alt="" />
+                {/* <p style={{ margin: "0px", textAlign: "center" }}>
+                  {getname.name}
+                </p> */}
+                <a title={`Nhóm ${getname.name}`}>
+                  <img src={getlink} alt="" />
+                </a>
               </div>
               <div className="gr-btn">
                 <button>Tham Gia</button>
@@ -103,7 +107,7 @@ export function Creategrpinterfaces() {
               <label for="username">Tên Nhóm:</label>
               <input
                 type="text"
-                value={inputcre}
+                // value={inputcre}
                 onChange={getvalue}
                 id="username"
                 name="username"
@@ -111,7 +115,7 @@ export function Creategrpinterfaces() {
               />
               <label for="decrip">Ảnh nhóm:</label>
               <input
-                value={getlink}
+                // value={getlink}
                 onChange={takeLink}
                 type="text"
                 id="decrip"
@@ -135,12 +139,13 @@ export function Creategrpinterfaces() {
   );
 }
 export function Ads() {
-  const { formappear, signupappear, Creategrp } = useContext(Appcontext);
+  const { formappear, signupappear, Creategrp, cartappear } =
+    useContext(Appcontext);
   return (
     <div>
       <div
         className={`ads ${
-          formappear || signupappear || Creategrp ? "active" : ""
+          formappear || signupappear || Creategrp || cartappear ? "active" : ""
         }`}
       ></div>
     </div>
@@ -189,7 +194,10 @@ export function BtnLoginSignup() {
           <div className="word">
             <p>
               Hãy tham gia vào để trở thành thành viên của
-              <strong>LEARN X2</strong> <br />
+              <strong style={{ paddingLeft: "5px", fontWeight: "900" }}>
+                LEARN X2
+              </strong>{" "}
+              <br />
               và tham gia hỏi đáp cùng các bạn khác!!!
               <br />
             </p>
@@ -212,7 +220,7 @@ export function BtnLoginSignup() {
             onClick={closeform}
             id="close"
           ></i>
-          <form id="loginform" onSubmit={handleSubmitlogin}>
+          <form className="loginform" onSubmit={handleSubmitlogin}>
             <h4
               style={{
                 margin: "0px",
@@ -350,3 +358,4 @@ export function BtnLogout() {
     </div>
   );
 }
+

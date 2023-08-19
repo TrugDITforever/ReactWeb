@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./introduc.css";
+import "./Cssfile/introduc.css";
 import Navbar from "./Navbar";
 import logo from "./imagess/logo.png";
 import facebookicon from "./imagess/facebook.png";
@@ -333,7 +333,7 @@ function Introduce() {
                         </ul>
                       </div>
                       <div className="btnmove">
-                        <Link to="/">Bắt đầu</Link>
+                        <a href="/">Bắt đầu</a>
                       </div>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./test9to10.css";
+import "./Cssfile/test9to10.css";
 import {
   Creategrpinterfaces,
   Ads,
@@ -15,7 +15,7 @@ import { AppProvider } from "./Contexxt/Appcontext";
 function Test9to10() {
   return (
     <div className="Test9to10">
-      <AppProvider>
+      <>
         <Navbar />
         <div className="container">
           <Ads></Ads>
@@ -503,7 +503,7 @@ function Test9to10() {
             </div>
           </footer>
         </div>
-      </AppProvider>
+      </>
     </div>
   );
 }

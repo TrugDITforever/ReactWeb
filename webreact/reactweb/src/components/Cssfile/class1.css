@@ -26,8 +26,9 @@ body {
   height: auto;
 }
 .open h1 {
-  font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  color: #524e4e;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
   text-align: center;
 }
 .body {
@@ -123,7 +124,7 @@ body {
   color: forestgreen;
 }
 
-.word2 p {
+.word3 p {
   font-family: var(--poppins-font);
 }
 .word1 p {
@@ -193,6 +194,9 @@ body {
 }
 .btndown.changee {
   background-color: chartreuse;
+}
+.word3 {
+  margin-bottom: 0;
 }
 .infor {
   background-image: url(https://i.pinimg.com/236x/28/a2/c7/28a2c78d7e4987a057a612842002bf90.jpg);

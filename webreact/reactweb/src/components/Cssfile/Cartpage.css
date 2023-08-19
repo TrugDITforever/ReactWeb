@@ -1,0 +1,198 @@
+.Cart-container {
+  width: 100%;
+  margin-top: 136px;
+}
+.layout-Cart {
+  margin-top: 10rem;
+  margin-left: 8rem;
+  width: 85%;
+  height: 300px;
+}
+.under-layoutcart {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+.Left-layout {
+  width: 70%;
+  height: auto;
+}
+.title-leftlayout {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  opacity: 0.7;
+}
+.row-layout {
+  background-color: #fafafa;
+  width: 100%;
+  height: auto;
+}
+.row-layout p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.item-place {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e7e2e2;
+  width: 100%;
+  display: flex;
+}
+.left-itemplace {
+  padding-left: 10px;
+  padding-right: 20px;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+.left-itemplace img {
+  width: 100%;
+}
+.right-itemplace {
+  display: inline-flex;
+  width: 90%;
+}
+.item-info {
+  /* display: inline-flex;
+  align-items: center; */
+  width: 40%;
+}
+.item-quantity {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+.item-price {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+}
+.item-total-price {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+.Place-to-change {
+  height: 25px;
+  display: inline-flex;
+}
+.Place-to-change input {
+  outline: none;
+  border: 0.5px solid #ccc;
+  text-align: center;
+  width: 25px;
+}
+.Place-to-change button {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0;
+  text-align: center;
+  width: 25px;
+  border: 1px solid #f3f4f4;
+  border-radius: 0;
+  float: left;
+  background: #f3f4f4;
+}
+.Place-to-change button:hover {
+  cursor: pointer;
+}
+.item-price p {
+  width: 100%;
+  margin: 2px;
+  text-align: center;
+}
+.sales-price {
+  text-decoration: line-through;
+}
+.item-total-price p {
+  margin: 0;
+  text-align: center;
+}
+.allitem-total-price {
+  width: 100%;
+}
+.total-price {
+  color: rgb(23, 171, 171);
+}
+.icon-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.icon-delete a {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.icon-delete a:hover {
+  cursor: pointer;
+}
+.Right-layout {
+  width: 20%;
+}
+.Box-rightlayout {
+  margin-top: 100px;
+  width: 100%;
+  height: 215px;
+  border: #ccc 1px solid;
+}
+.Small-box {
+  width: 90%;
+  margin-left: 10px;
+  height: auto;
+}
+.Product-info {
+  width: 100%;
+  height: auto;
+  border-bottom: 0.5px solid #ccc;
+}
+.Product-info p {
+  padding-top: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+}
+.Pricetotal {
+  width: 100%;
+  height: auto;
+  border-bottom: 0.5px solid #ccc;
+}
+.Pricetotal p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+}
+.Pricetotal span {
+  float: right;
+}
+.notes p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1px;
+  opacity: 0.7;
+}
+.buttonpay {
+  position: relative;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pay-button {
+  display: block;
+  color: #f3f4f4;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  padding: 10px 60px;
+  background-color: rgb(31, 179, 179);
+  transition: all 0.5s linear;
+}
+.pay-button:hover {
+  background-color: rgb(85, 85, 236);
+  cursor: pointer;
+}

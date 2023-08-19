@@ -1,6 +1,6 @@
 import users from "./imagess/user.png";
 import React, { useState, useEffect } from "react";
-import "./style.css";
+import "./Cssfile/style.css";
 function Post() {
   const [searchvalue, searchvalueUpdate] = useState("");
   const [comments, commentUpdate] = useState([]);

@@ -1,4 +1,4 @@
-import "./userinfo.css";
+import "./Cssfile/userinfo.css";
 import Navbar from "./Navbar";
 import { AppProvider, Appcontext } from "./Contexxt/Appcontext";
 import { useContext, useEffect, useState } from "react";
@@ -59,7 +59,7 @@ function Userinfo() {
   };
   return (
     <div className="StartUserInfo">
-      <AppProvider>
+      <>
         <Navbar></Navbar>
         <div className="infoInterfaces">
           <div className="allINfor">
@@ -223,7 +223,7 @@ function Userinfo() {
             </div>
           </div>
         </div>
-      </AppProvider>
+      </>
     </div>
   );
 }

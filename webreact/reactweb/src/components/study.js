@@ -6,7 +6,7 @@ import {
   Ads,
   BtnLoginSignup,
 } from "./funtionforsignupAndlogin";
-import "./style.css";
+import "./Cssfile/style.css";
 import team from "./imagess/team.png";
 import cup from "./imagess/cup.png";
 import logo from "./imagess/logo.png";
@@ -14,14 +14,12 @@ import facebookicon from "./imagess/facebook.png";
 import gmialicon from "./imagess/gmail.png";
 import telephone from "./imagess/telephone-call.png";
 import Post from "./postcomments";
-import { AppProvider } from "./Contexxt/Appcontext";
 function Study() {
   const [showArrow, setShowArrow] = useState(false);
   useEffect(() => {
     const infor = document.querySelector(".infor");
     const handleScroll = () => {
       const scroll = infor.scrollTop;
-      console.log(scroll);
       if (scroll >= 100) {
         setShowArrow(true);
       } else {
@@ -29,15 +27,72 @@ function Study() {
       }
     };
     infor.addEventListener("scroll", handleScroll);
-
     return () => {
       infor.removeEventListener("scroll", handleScroll);
     };
   });
-
+  const [searchforsubject, setsearch] = useState("");
+  const userStatus = [
+    {
+      id: 1,
+      name: "Lê Quang Nhã",
+      subjects: "Toán học",
+      time: 1,
+      notes: "Giải giúp em bài trên được không ạ",
+      image:
+        "https://2.bp.blogspot.com/-N5M0I9_1tks/XkElu5uQXII/AAAAAAAAARs/s6sQJXhXzC8CtdmKO3dNv9wKnMAsodQBwCLcBGAsYHQ/s1600/trac-nghiem-gioi-han-1.png",
+    },
+    {
+      id: 2,
+      name: "Tạ Quang Anh",
+      subjects: "Hóa học",
+      time: 15,
+      notes: "Giải giúp em bài trên được không ạ",
+      image:
+        "https://i.vdoc.vn/data/image/2023/03/07/16781982969496425815228314447288.jpg",
+    },
+    {
+      id: 3,
+      name: "Nguyễn Việt Hưng",
+      subjects: "Toán học",
+      time: 11,
+      notes: "Giải giúp em bài trên được không ạ",
+      image:
+        "https://api.toploigiai.vn/uploads/anh-bai-viet/giai-toan-11-nang-cao/chuong-4-dai-so-va-giai-tich/giai-toan-11-nang-cao-bai-59-trang-178-dai-so-va-giai-tich.png",
+    },
+    {
+      id: 4,
+      name: "Trần Bảo Quân",
+      subjects: "Vật lí",
+      time: 3,
+      notes: "Giải giúp em bài trên được không ạ",
+      image:
+        "https://assets.isu.pub/document-structure/221220100117-2285af387a32251e38e80d8589d7bfb5/v1/dcef8b126499e96486dbff629acf0020.jpeg",
+    },
+    {
+      id: 5,
+      name: "Nguyễn Bảo Ngọc",
+      subjects: "Tiếng anh",
+      time: 3,
+      notes: "Giải giúp em bài trên được không ạ",
+      image:
+        "https://giaovienvietnam.com/wp-content/uploads/2021/02/Screen-Shot-2021-02-21-at-23.35.46.png",
+    },
+    {
+      id: 6,
+      name: "Khánh Linh",
+      subjects: "Tiếng anh",
+      time: 3,
+      notes: "Giải giúp em bài trên được không ạ",
+      image: "https://hocmai.vn/kho-tai-lieu/documents/1590396216/page-2.png",
+    },
+  ];
+  const findsubjects = userStatus.filter((status) =>
+    status.subjects.toLowerCase().includes(searchforsubject.toLowerCase())
+  );
   return (
     <div className="study">
-      <AppProvider>
+      <>
         <Navbar></Navbar>
         <Ads></Ads>
         <div className="container">
@@ -84,103 +139,58 @@ function Study() {
               </div>
               <div className="under-ask">
                 <div className="ask-box">
-                  <form action="">
+                  <form action="" onSubmit={(e) => e.preventDefault()}>
                     <input
                       id="ask-place"
                       type="text"
-                      placeholder="Tìm kiếm câu hỏi...... "
+                      onChange={(e) => setsearch(e.target.value)}
+                      placeholder="Tìm kiếm môn cần hỏi...... "
+                      // autoComplete="none"
                       required
                     />
-                    {/* <!-- <button>
-                  <i className="fa-solid fa-magnifying-glass fa-lg"></i>
-                </button> --> */}
+
                     <input type="submit" value="Search" />
                   </form>
                 </div>
               </div>
 
-              <div className="box1">
-                <div className="pic1">
-                  <ul>
-                    <li>
-                      <a>
-                        <img width="40px" src={team} alt="" />
-                        Lê Quang Nhã
-                      </a>
-                    </li>
-                    <li className="space">
-                      <a href=""> Toán học </a>
-                    </li>
-                    <li className="space">
-                      <a href=""> 1 giờ trước </a>
-                    </li>
-                  </ul>
+              {findsubjects.map((user, index) => (
+                <div
+                  key={user.id}
+                  style={{ marginLeft: index % 2 === 0 ? "10rem" : "6rem" }}
+                  className="box1"
+                >
+                  <div
+                    className="pic1"
+                    style={{
+                      backgroundColor: index % 2 === 0 ? "#1E90FF" : "pink",
+                    }}
+                  >
+                    <ul>
+                      <li>
+                        <a>
+                          <img width="40px" src={team} alt="" />
+                          {user.name}
+                        </a>
+                      </li>
+                      <li className="space">
+                        <a href=""> {user.subjects}</a>
+                      </li>
+                      <li className="space">
+                        <a href=""> {user.time} giờ trước </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="comment1">
+                    <p>{user.notes}</p>
+                    <a>
+                      <img src={user.image} alt="" />
+                    </a>
+                  </div>
                 </div>
-                <div className="comment1">
-                  <p>Giải giúp em bài trên được không ạ!!</p>
-                  <a>
-                    <img
-                      src="https://2.bp.blogspot.com/-N5M0I9_1tks/XkElu5uQXII/AAAAAAAAARs/s6sQJXhXzC8CtdmKO3dNv9wKnMAsodQBwCLcBGAsYHQ/s1600/trac-nghiem-gioi-han-1.png"
-                      alt=""
-                    />
-                  </a>
-                </div>
-              </div>
-              <div className="box2">
-                <div className="pic2">
-                  <ul>
-                    <li>
-                      <a>
-                        <img width="40px" src={team} alt="" />
-                        Tạ Quang Anh
-                      </a>
-                    </li>
-                    <li className="space">
-                      <a> Hóa học </a>
-                    </li>
-                    <li className="space">
-                      <a> 15 giờ trước </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="comment2">
-                  <p>Có thể giúp em giải bài 2,3,4 được không ạ!!</p>
-                  <a>
-                    <img
-                      src="https://i.vdoc.vn/data/image/2023/03/07/16781982969496425815228314447288.jpg"
-                      alt=""
-                    />
-                  </a>
-                </div>
-              </div>
-              <div className="box1">
-                <div className="pic1">
-                  <ul>
-                    <li>
-                      <a>
-                        <img width="40px" src={team} alt="" />
-                        Nguyễn Việt Hưng
-                      </a>
-                    </li>
-                    <li className="space">
-                      <a href=""> Toán học </a>
-                    </li>
-                    <li className="space">
-                      <a href=""> 1 giờ trước </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="comment1">
-                  <p>Em đang cần gấp đáp án cho bài dưới này ạ!!</p>
-                  <a>
-                    <img
-                      src="https://api.toploigiai.vn/uploads/anh-bai-viet/giai-toan-11-nang-cao/chuong-4-dai-so-va-giai-tich/giai-toan-11-nang-cao-bai-59-trang-178-dai-so-va-giai-tich.png"
-                      alt=""
-                    />
-                  </a>
-                </div>
-              </div>
-              <div className="box2">
+              ))}
+
+              {/* <div className="box2">
                 <div className="pic2">
                   <ul>
                     <li>
@@ -206,7 +216,7 @@ function Study() {
                     />
                   </a>
                 </div>
-              </div>
+              </div> */}
               <div className="line"></div>
               <div className="reward">
                 <div className="iconre1">
@@ -490,7 +500,7 @@ function Study() {
             </div>
           </footer>
         </div>
-      </AppProvider>
+      </>
     </div>
   );
 }

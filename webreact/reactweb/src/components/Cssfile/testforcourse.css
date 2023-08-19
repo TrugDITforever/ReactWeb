@@ -89,14 +89,18 @@ html {
 .placetoodown {
   display: flex;
 }
-.arr {
+.arr2 {
   width: 40%;
 }
-.arr ul li {
+.arr2 ul li {
   display: inline-block;
 }
-.arr ul {
+.arr2 ul {
   animation: backup 0.5s infinite alternate;
+}
+.arr2 i {
+  font-size: small;
+  animation: backup 0.8s infinite alternate;
 }
 @keyframes backup {
   0% {
@@ -134,19 +138,19 @@ html {
 .fa-arrow-up {
   font-size: xx-large;
 }
-.arr li:nth-child(1) {
+.arr2 li:nth-child(1) {
   color: rgb(193, 193, 4);
   animation: changecolorr 0.5s infinite alternate;
 }
-.arr li:nth-child(2) {
+.arr2 li:nth-child(2) {
   color: rgb(179, 1, 182);
   animation: changecolor2 0.5s infinite alternate;
 }
-.arr li:nth-child(3) {
+.arr2 li:nth-child(3) {
   color: rgb(24, 160, 6);
   animation: changecolorr 0.5s infinite alternate;
 }
-.arr li:nth-child(4) {
+.arr2 li:nth-child(4) {
   color: rgb(255, 3, 3);
   animation: changecolor2 0.5s infinite alternate;
 }
@@ -165,11 +169,9 @@ html {
   height: 40px;
   line-height: 40px;
   font-size: 18px;
-  font-family: sans-serif;
   text-decoration: none;
-  background-color: aqua;
+  background-color: rgb(189, 100, 59);
   color: #333;
-  letter-spacing: 1px;
   text-align: center;
   position: relative;
   transition: all 0.35s;
@@ -188,6 +190,7 @@ html {
   transition: all 0.35s;
 }
 .btndoown a span {
+  font-family: "Nunito", sans-serif;
   position: relative;
   z-index: 2;
 }

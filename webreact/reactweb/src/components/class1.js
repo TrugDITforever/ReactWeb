@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./class1.css";
+import "./Cssfile/class1.css";
 import Navbar from "./Navbar";
 import {
   Creategrpinterfaces,
@@ -35,7 +35,7 @@ function Allclass() {
   });
   return (
     <div className="Allclass">
-      <AppProvider>
+      <>
         <Navbar></Navbar>
         <div className="container">
           <Ads></Ads>
@@ -496,7 +496,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Lớp 1</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -535,7 +535,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Lớp 2</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -574,7 +574,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Lớp 3</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -613,7 +613,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Lớp 4</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -652,7 +652,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Lớp 5</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -694,7 +694,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Âm Nhạc</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -733,7 +733,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Công Nghệ</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -772,7 +772,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Địa Lý</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -811,7 +811,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn GDCD</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -850,7 +850,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Hóa Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -889,7 +889,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Lịch Sử</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -928,7 +928,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Mĩ Thuật</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -967,7 +967,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Ngữ Văn</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1006,7 +1006,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Sinh Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1045,7 +1045,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Tiếng Anh</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1084,7 +1084,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Tin Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1123,7 +1123,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Toán Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1162,7 +1162,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Vật Lí</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1205,7 +1205,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Công Nghệ</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1244,7 +1244,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Địa Lý</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1283,7 +1283,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn GDCD</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1322,7 +1322,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Hóa Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1361,7 +1361,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Lịch Sử</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1400,7 +1400,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Ngữ Văn</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1439,7 +1439,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Sinh Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1478,7 +1478,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Tiếng Anh</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1517,7 +1517,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Tin Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1556,7 +1556,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Toán Học</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1595,7 +1595,7 @@ function Allclass() {
                     <div className="word1">
                       <p>Môn Vật Lí</p>
                     </div>
-                    <div className="word2">
+                    <div className="word3">
                       <p>Tải tài liệu miễn phí ở đây</p>
                     </div>
                     <div className="div-under">
@@ -1862,7 +1862,7 @@ function Allclass() {
             </div>
           </footer>
         </div>
-      </AppProvider>
+      </>
     </div>
   );
 }

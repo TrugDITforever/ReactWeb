@@ -1,68 +1,36 @@
-import React, { useState } from "react";
-import users from "./components/imagess/user.png";
+// App.js
+import React from "react";
+import ReactDOM from "react-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import Study from "./components/study";
+import Test from "./components/testforcouces";
+import Allclass from "./components/class1";
+import Test9to10 from "./components/test9to10";
+import CollegeTest from "./components/college.js";
+import BookStrore from "./components/bookstore";
+import Cartpage from "./components/Cartpage";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Introduce from "./components/introduce";
+import Userinfo from "./components/userinfo";
+import { AppProvider } from "./components/Contexxt/Appcontext";
 
 const App = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [comments, setComments] = useState([]);
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleCreateComment = () => {
-    if (inputValue.trim() !== "") {
-      setComments((prevComments) => [
-        ...prevComments,
-        { id: comments.length + 1, name: "Linh", content: inputValue },
-      ]);
-      setInputValue("");
-    }
-  };
-
   return (
-    <div>
-      <div className="box-cmt">
-        <img src={users} alt="" />
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Viết bình luận tại đây..."
-        />
-        <button onClick={handleCreateComment}>Đăng</button>
-      </div>
-      {/* Thêm dấu mở ngoặc {} để bao quanh phần tử JSX trong hàm map */}
-      {comments.map((comment) => (
-        <div key={comment.id} className="people-cmt">
-          <div>
-            <img
-              src="https://thuthuatnhanh.com/wp-content/uploads/2019/02/anh-dai-dien-dep-cho-zalo.jpeg"
-              alt=""
-            />
-          </div>
-          <div className="name-cmt">
-            <p>{comment.name}</p>
-            <p>{comment.content}</p>
-          </div>
-        </div>
-      ))}
-      {/* Các phần tử div ở dưới đây không thay đổi */}
-      <div className="people-cmt">
-        <div>
-          <img
-            src="https://thuthuatnhanh.com/wp-content/uploads/2019/02/anh-dai-dien-dep-cho-zalo.jpeg"
-            alt=""
-          />
-        </div>
-        <div className="name-cmt">
-          <p>Linh</p>
-          <p>Bài giải hay quá</p>
-        </div>
-      </div>
-      <div className="people-cmt">
-        {/* Các phần tử div khác ở dưới đây cũng tương tự */}
-      </div>
-    </div>
+    <AppProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Study />} />
+          <Route path="/allcources" element={<Allclass />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/test9to10" element={<Test9to10 />} />
+          <Route path="/collegetest" element={<CollegeTest />} />
+          <Route path="/introduce" element={<Introduce />} />
+          <Route path="/userinfo" element={<Userinfo />} />
+          <Route path="/bookstore" element={<BookStrore />} />
+          <Route path="/cartpage" element={<Cartpage />} />
+        </Routes>
+      </BrowserRouter>
+    </AppProvider>
   );
 };
 

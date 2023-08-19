@@ -1,5 +1,5 @@
 import React from "react";
-import "./college.css";
+import "./Cssfile/college.css";
 import Navbar from "./Navbar";
 import Listmenu from "./tabmain";
 import {
@@ -15,7 +15,7 @@ import { AppProvider } from "./Contexxt/Appcontext";
 function CollegeTest() {
   return (
     <div className="CollegeTest">
-      <AppProvider>
+      <>
         <Navbar></Navbar>
         <div className="container">
           <Ads></Ads>
@@ -661,7 +661,7 @@ function CollegeTest() {
             </div>
           </footer>
         </div>
-      </AppProvider>
+      </>
     </div>
   );
 }

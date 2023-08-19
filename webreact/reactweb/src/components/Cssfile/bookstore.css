@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant&family=Nunito:wght@500&display=swap");
+
 .InterfaceBookStore {
   width: 100%;
   display: flex;
@@ -84,6 +86,9 @@
   font-size: x-large;
   color: rgb(34, 34, 99);
 }
+.fa-cart-shopping:hover {
+  cursor: pointer;
+}
 .numberShop {
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -106,8 +111,8 @@
 }
 .SearchBook input {
   margin-left: 20rem;
-  width: 40%;
-  height: 1.5rem;
+  width: 30%;
+  height: 1rem;
   padding: 10px 20px;
   border: 1px solid black;
   border-right: none;
@@ -121,7 +126,7 @@
   background-color: rgb(89, 89, 232);
   width: 12%;
   padding: 10px;
-  height: 2.87rem;
+  height: 2.38rem;
   transition: all 0.2s linear;
 }
 .SearchBook button:hover {
@@ -164,7 +169,7 @@
   margin: 1rem 0 2rem 3rem;
   width: 20%;
   height: 350px;
-  border-radius: 20px;
+  border-radius: 5px;
   border: 2px solid #ccc;
   /* box-shadow: 9px 9px 12px #ccc, -9px -9px 12px #ccc; */
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
@@ -179,19 +184,22 @@
   width: 100%;
 }
 .ForImg img {
-  border-radius: 15px;
+  border-radius: 5px;
   width: 100%;
   height: 270px;
 }
+
 .ImgBook:hover .BtnBuyAndAdd {
   cursor: pointer;
   opacity: 1;
   height: auto;
+  bottom: 0;
 }
 .BtnBuyAndAdd {
   opacity: 0;
   bottom: 10px;
   position: absolute;
+  bottom: -10px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -223,14 +231,180 @@
   cursor: pointer;
   background-color: rgb(76, 80, 81);
 }
-.PriceAndWord p {
+.PriceAndWord {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.price-number {
   font-family: "Poppins", sans-serif;
-  margin: 0px;
+  margin: 0px 10px 0px 0px;
   text-align: center;
   color: rgb(41, 163, 163);
 }
+.price-sales {
+  opacity: 0.7;
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  text-align: center;
+  text-decoration: line-through;
+  color: rgb(3, 8, 8);
+}
 .PriceAndWord h4 {
+  width: 100%;
+  font-size: 15px;
   line-height: 15px;
   margin-top: 5px;
   margin-bottom: 5px;
+  white-space: normal;
+  color: #5c5c5c;
+  line-height: 16px;
+  overflow: hidden;
+  text-align: center;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+.Cartplace {
+  position: fixed;
+  top: 0;
+  right: -50%;
+  z-index: 10;
+  background-color: white;
+  width: 28%;
+  height: 760px;
+  transition: all 0.3s linear;
+}
+.Cartplace.appearcart {
+  right: 0;
+}
+.editcart {
+  width: 83%;
+  margin: 0 0 0 3rem;
+  height: 650px;
+  overflow: auto;
+}
+.iconcartremove i {
+  margin-top: 50px;
+  margin-left: 23rem;
+}
+.iconcartremove i:hover {
+  color: coral;
+  cursor: pointer;
+}
+.Cartword {
+  padding-left: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+.PlaceforProduct {
+  width: 100%;
+  height: auto;
+}
+.cart-view {
+  position: relative;
+  width: 100%;
+}
+.imgincart img {
+  width: 85px;
+}
+.protitleview {
+  font-family: "poppins", sans-serif;
+  float: left;
+  width: 100%;
+  font-size: 12px;
+}
+.quantity-pro {
+  float: left;
+  width: auto;
+  background: #ededed;
+  text-align: center;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1;
+  margin-right: 12px;
+}
+.pro-price {
+  display: block;
+  text-align: center;
+  float: left;
+  line-height: 26px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+.remove-cart {
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
+.remove-cart:hover {
+  cursor: pointer;
+}
+.line2 {
+  float: left;
+  width: 100%;
+  border-top: 2px solid #000000;
+  margin: 10px 0px;
+}
+.totalprice {
+  width: 100%;
+}
+.totalprice td {
+  padding-bottom: 3rem;
+}
+.text-left {
+  opacity: 0.7;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  padding-left: 0px;
+}
+.text-right {
+  opacity: 0.7;
+  text-align: right;
+  font-family: "Poppins", sans-serif;
+  padding-right: 0px;
+}
+.watch-cart {
+  text-decoration: none;
+  padding: 16px 20px;
+  line-height: 45px;
+  height: 45px;
+  width: 100%;
+  margin-right: 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  background-color: #68c9fb;
+  transition: all 0.5s linear;
+}
+.pay-cart {
+  width: 100%;
+  text-align: right;
+  font-family: "Poppins", sans-serif;
+  padding: 16px 25px;
+  color: white;
+  background-color: #4a90e2;
+  transition: all 0.5s linear;
+}
+.watch-cart:hover {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    #3f96c1,
+    rgba(245, 245, 245, 0.284)
+  );
+}
+.pay-cart:hover {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    #5987bc,
+    rgba(245, 245, 245, 0.284)
+  );
+}
+.Wordtitle {
+  font-family: "Nunito", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #5c5c5c;
+  margin: 0 0 13px 30px;
 }
