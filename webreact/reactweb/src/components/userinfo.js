@@ -1,12 +1,12 @@
 import "./Cssfile/userinfo.css";
-import Navbar from "./Navbar";
+import Navbar from "./FunctionforMainPage/Navbar";
 import { AppProvider, Appcontext } from "./Contexxt/Appcontext";
 import { useContext, useEffect, useState } from "react";
-import { BtnLogout } from "./funtionforsignupAndlogin";
+import { BtnLogout } from "./FunctionforMainPage/funtionforsignupAndlogin";
 function Userinfo() {
-  const [username, setusername] = useState("Trung Do");
+  const [username, setusername] = useState("Bao Ngoc");
   const [phonenumber, setphonenumber] = useState("0911163990");
-  const [email, setemail] = useState("dotrung1512@gmail.com");
+  const [email, setemail] = useState("Bao Ngoc@gmail.com");
   const [address, setaddress] = useState("Vinh Linh, Viet Nam");
 
   const valueName = (e) => {
@@ -91,7 +91,7 @@ function Userinfo() {
                     <div className="UpperBox">
                       <div className="ImgandName">
                         <a>
-                          <img src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" />
+                          <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.15752-9/367634288_670232271396797_3517587654188272475_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=5mo7xb_RnO8AX--Ue92&_nc_oc=AQmvurROgagcPsjnRKMQjqy-BkaQND1TpJ5idx6LGdV0hMt1KKPCelBdz6IEYOodcv_UBlofxsHGVO2IR0bWdaRb&_nc_ht=scontent.fdad1-3.fna&oh=03_AdSF18jhzDrV4wlkc6-zH4Y0DBIwfKclcQ-d21VHCOGcaA&oe=650DD351" />
                           {username}
                         </a>
                         <p>{address}</p>

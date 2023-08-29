@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./Cssfile/style.css";
-import logo from "./imagess/logo.png";
-
+import logo from "../imagess/logo.png";
 import { Link } from "react-router-dom";
-import { Appcontext } from "./Contexxt/Appcontext";
+import { Appcontext } from "../Contexxt/Appcontext";
 function Navbars() {
   const { account, setaccoutname } = useContext(Appcontext);
   useEffect(() => {
@@ -42,13 +40,23 @@ function Navbars() {
                   Hỏi & Đáp
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/allcources">
                   <i
                     class="fa-regular fa-file-lines"
                     style={{ color: "#5C5470" }}
                   ></i>
                   Giáo Án
+                </Link>
+              </li> */}
+
+              <li>
+                <Link to="/introduce">
+                  <i
+                    class="fa-solid fa-door-open"
+                    style={{ color: "#5C5470" }}
+                  ></i>
+                  Giới Thiệu
                 </Link>
               </li>
               <li>
@@ -58,15 +66,6 @@ function Navbars() {
                     style={{ color: "#5C5470" }}
                   ></i>
                   Cửa Hàng
-                </Link>
-              </li>
-              <li>
-                <Link to="/introduce">
-                  <i
-                    class="fa-solid fa-door-open"
-                    style={{ color: "#5C5470" }}
-                  ></i>
-                  Giới Thiệu
                 </Link>
               </li>
               {account && (

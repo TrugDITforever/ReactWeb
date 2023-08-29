@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 
 export const Appcontext = createContext();
-
 export const AppProvider = ({ children }) => {
   const [Creategrp, setupdateCLick3] = useState(false);
   const [formappear, setupdateCLick] = useState(false);
@@ -12,8 +11,6 @@ export const AppProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [cartItemsshop, setCartItemsShop] = useState([]);
-  // const [Thappear, setThappear] = useState(false);
-  // const [Thcsappear, setThcsappear] = useState(false);
   const [texttosearch, settexttosearch] = useState("all");
   const [products, setProducts] = useState([
     {

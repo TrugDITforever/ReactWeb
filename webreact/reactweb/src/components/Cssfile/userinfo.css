@@ -1,7 +1,7 @@
 .infoInterfaces {
   width: 100%;
   height: auto;
-  margin-top: 135px;
+  margin-top: 115px;
 }
 .allINfor {
   background-image: linear-gradient(
@@ -16,7 +16,7 @@
 .Menuinfo {
   position: relative;
   width: 20%;
-  height: 625px;
+  height: 645px;
   /* background-color: antiquewhite; */
   border-right: 1px solid rgba(142, 139, 139, 0.953);
 }

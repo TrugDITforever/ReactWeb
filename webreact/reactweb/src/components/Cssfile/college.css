@@ -141,16 +141,14 @@ html {
   height: 70px;
 }
 .review {
-  /* position: absolute;
-  visibility: visible; */
   position: absolute;
-  /* opacity: 1; */
   visibility: hidden;
+  opacity: 0;
   top: 10%;
   left: 30%;
   width: 36rem;
   height: 36rem;
-  z-index: 99;
+  z-index: 9;
   transition: opacity 0.3s ease;
 }
 .review.opacity {
@@ -168,17 +166,17 @@ html {
   width: 36rem;
   border-radius: 10px;
 }
-.test:nth-child(1) {
+.test {
   width: 36rem;
   visibility: hidden;
   opacity: 0;
   transition: opacity 1s linear;
 }
-.test:nth-child(1).appearrr {
+.test.appearrr {
   visibility: visible;
   opacity: 1;
 }
-.test:nth-child(2) {
+/* .test:nth-child(2) {
   visibility: hidden;
   opacity: 0;
   transition: opacity 1s linear;
@@ -206,7 +204,7 @@ html {
 .test:nth-child(4).appearrr {
   visibility: visible;
   opacity: 1;
-}
+} */
 /* .alert {
   z-index: 10;
   top: 30px;

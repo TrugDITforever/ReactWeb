@@ -1,15 +1,54 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Cssfile/style.css";
-import homeicon from "./imagess/homeicon.png";
+import homeicon from "../imagess/homeicon.png";
+import { Appcontext } from "../Contexxt/Appcontext";
+import { ClassContext } from "../Contexxt/ClassContext";
 function Listmenu() {
+  const listclass = [
+    {
+      class: 1,
+    },
+    {
+      class: 2,
+    },
+    {
+      class: 3,
+    },
+    {
+      class: 4,
+    },
+    {
+      class: 5,
+    },
+    {
+      class: 6,
+    },
+    {
+      class: 7,
+    },
+    {
+      class: 8,
+    },
+    {
+      class: 9,
+    },
+    {
+      class: 10,
+    },
+    {
+      class: 11,
+    },
+    {
+      class: 12,
+    },
+  ];
+  const { idexseleac, setwwordClass, setindex } = useContext(ClassContext);
   return (
     <div>
       {" "}
       <div className="menu1">
         <div className="listword">
           <a className="home">
-            {/* <img src={homeicon} alt="" /> */}
             <i
               class="fa-solid fa-graduation-cap"
               style={{ color: "#3E606F", fontSize: "2rem" }}
@@ -17,81 +56,28 @@ function Listmenu() {
             MỤC LỤC
           </a>
           <h5>GIÁO ÁN HỌC CƠ BẢN</h5>
-          {/* <!-- <h5>Các khóa học dành cho các lớp</h5> --> */}
         </div>
         <div className="liststudy">
           <ul>
-            <li>
-              <a href="">
-                <Link to="/allcources">Lớp 1</Link>
-              </a>
-            </li>
-            <li>
-              <a href="class1.html">
-                {" "}
-                <Link to="/allcources">Lớp 2</Link>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                {" "}
-                <Link to="/allcources">Lớp 3</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 4</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 5</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 6</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 7</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 8</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 9</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 10</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 11</Link>
-              </a>
-            </li>
-            <li>
-              <a href=" ">
-                {" "}
-                <Link to="/allcources">Lớp 12</Link>
-              </a>
-            </li>
+            {listclass.map((listclass, index) => (
+              <li key={index}>
+                <Link
+                  to="/allcources"
+                  className={`${
+                    idexseleac === index
+                      ? `classname-selected`
+                      : `classname-selected-${listclass.class}`
+                  }`}
+                  onClick={() => {
+                    setwwordClass(listclass.class);
+                    setindex(index);
+                    // console.log("sdfasdf");
+                  }}
+                >
+                  Lớp {listclass.class}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

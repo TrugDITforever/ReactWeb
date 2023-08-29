@@ -11,7 +11,7 @@ html {
 }
 .start2 {
   width: 100%;
-  padding-top: 135px;
+  padding-top: 117px;
 }
 .introduce {
   width: 100%;
@@ -554,7 +554,7 @@ html {
   width: 80%;
   position: absolute;
   top: 20%;
-  mix-blend-mode: color;
+  mix-blend-mode: multiply;
 }
 .imglearn img {
   width: 48.4%;

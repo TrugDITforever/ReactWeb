@@ -235,19 +235,34 @@ html {
 .last {
   display: none;
 }
-.infor {
+/* .infor {
   width: 83%;
-}
+} */
 .imagewelcome {
   position: relative;
   margin-top: 50px;
   width: 96%;
   height: 300px;
-  background-image: url(https://thuthuatnhanh.com/wp-content/uploads/2022/06/Hinh-anh-hoc-tap-chill.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+}
+.slideshowsliders {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+.slide {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 300px;
+  /* background-image: url(https://thuthuatnhanh.com/wp-content/uploads/2022/06/Hinh-anh-hoc-tap-chill.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
 }
 .welcome {
   position: absolute;

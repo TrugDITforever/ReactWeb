@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Appcontext } from "./Contexxt/Appcontext";
+import { Appcontext } from "../Contexxt/Appcontext";
 import { Link } from "react-router-dom";
+import { ClassContext } from "../Contexxt/ClassContext";
 
 export function Creategrpinterfaces() {
   const { Creategrp, setupdateCLick3 } = useContext(Appcontext);
@@ -11,10 +12,14 @@ export function Creategrpinterfaces() {
     setupdateCLick3(false);
   };
   const [inputcre, updateCre] = useState("");
-  const [getlink, setLink] = useState("");
+  const [getlink, setLink] = useState(null);
   const [getnames, setname] = useState([]);
-  const takeLink = (e) => {
-    setLink(e.target.value);
+  const takeLink = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setLink(imageUrl);
+    }
   };
   const getvalue = (e) => {
     updateCre(e.target.value);
@@ -45,10 +50,29 @@ export function Creategrpinterfaces() {
         <div className="group-main">
           <div className="group">
             <div className="group-img">
-              <img
-                src="https://xcdn-cf.vuihoc.vn/upload/5c209fe6176b0/2022/04/06/097a_khoi-d-gom-nhung-nganh-nao-1.png"
-                alt=""
-              />
+              <div
+                style={{
+                  width: "50%",
+                  marginRight: "10px",
+                }}
+              >
+                {" "}
+                <a>
+                  <img
+                    src="https://xcdn-cf.vuihoc.vn/upload/5c209fe6176b0/2022/04/06/097a_khoi-d-gom-nhung-nganh-nao-1.png"
+                    alt=""
+                  />
+                </a>{" "}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <span>Nhóm khối D</span>
+              </div>
             </div>
             <div className="gr-btn">
               <button>Tham Gia Ngay</button>
@@ -56,10 +80,29 @@ export function Creategrpinterfaces() {
           </div>
           <div className="group">
             <div className="group-img">
-              <img
-                src="https://static.ybox.vn/2020/12/1/1607335958957-lam-viec-nhom-hieu-qua.jpg"
-                alt=""
-              />
+              <div
+                style={{
+                  width: "50%",
+                  marginRight: "10px",
+                }}
+              >
+                {" "}
+                <a>
+                  <img
+                    src="https://static.ybox.vn/2020/12/1/1607335958957-lam-viec-nhom-hieu-qua.jpg"
+                    alt=""
+                  />
+                </a>{" "}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <span>TeamWork</span>
+              </div>
             </div>
             <div className="gr-btn">
               <button>Tham Gia Ngay</button>
@@ -69,12 +112,26 @@ export function Creategrpinterfaces() {
           {getnames.map((getname, index) => (
             <div key={index} className="group">
               <div className="group-img">
-                {/* <p style={{ margin: "0px", textAlign: "center" }}>
-                  {getname.name}
-                </p> */}
-                <a title={`Nhóm ${getname.name}`}>
-                  <img src={getlink} alt="" />
-                </a>
+                <div
+                  style={{
+                    width: "50%",
+                    marginRight: "10px",
+                  }}
+                >
+                  {" "}
+                  <a title={`Nhóm ${getname.name}`}>
+                    <img src={getlink} alt="" />
+                  </a>{" "}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <span>{getname.name}</span>
+                </div>
               </div>
               <div className="gr-btn">
                 <button>Tham Gia</button>
@@ -115,9 +172,8 @@ export function Creategrpinterfaces() {
               />
               <label for="decrip">Ảnh nhóm:</label>
               <input
-                // value={getlink}
                 onChange={takeLink}
-                type="text"
+                type="file"
                 id="decrip"
                 placeholder="Hãy thả link ảnh vào đây"
                 required
@@ -141,11 +197,15 @@ export function Creategrpinterfaces() {
 export function Ads() {
   const { formappear, signupappear, Creategrp, cartappear } =
     useContext(Appcontext);
+  ///ads appear in college.js
+  const { adsapper } = useContext(ClassContext);
   return (
     <div>
       <div
         className={`ads ${
-          formappear || signupappear || Creategrp || cartappear ? "active" : ""
+          formappear || signupappear || Creategrp || cartappear || adsapper
+            ? "active"
+            : ""
         }`}
       ></div>
     </div>
@@ -154,6 +214,7 @@ export function Ads() {
 export function BtnLoginSignup() {
   const { formappear, signupappear, setupdateCLick, setupdateCLick2 } =
     useContext(Appcontext);
+  const { setalertactive, setwordalert } = useContext(ClassContext);
   const { appear, setappear, setaccoutname } = useContext(Appcontext);
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
@@ -163,16 +224,43 @@ export function BtnLoginSignup() {
       setappear(false);
     } else setappear(true);
   });
+  const userAccounts = [
+    { namelogin: "trung", passlogin: "123" },
+    { namelogin: "user2", passlogin: "123" },
+    { namelogin: "user3", passlogin: "123" },
+    { namelogin: "user4", passlogin: "123" },
+    { namelogin: "user5", passlogin: "123" },
+    { namelogin: "user6", passlogin: "123" },
+    { namelogin: "user7", passlogin: "123" },
+    { namelogin: "user8", passlogin: "123" },
+    { namelogin: "user9", passlogin: "123" },
+    { namelogin: "user10", passlogin: "123" },
+  ];
   const handleSubmitlogin = (event) => {
     event.preventDefault();
-    if (username === "trung" && password === "123") {
+    const matchedUser = userAccounts.find(
+      (user) => user.namelogin === username && user.passlogin === password
+    );
+    if (matchedUser) {
       setpassword("");
       setusername("");
       setappear(false);
       localStorage.setItem("appear", false);
       setupdateCLick(false);
+      ///alert message
+      setalertactive(true);
+      setwordalert("Chào mừng bạn đến với LearnX2");
+      setTimeout(() => {
+        setalertactive(false);
+      }, 3000);
       setaccoutname(true);
       localStorage.setItem("account", true);
+    } else {
+      setalertactive(true);
+      setwordalert("Tên đăng nhập hoặc mật khẩu không đúng.");
+      setTimeout(() => {
+        setalertactive(false);
+      }, 3000);
     }
   };
   const clickappear = () => {
@@ -268,7 +356,7 @@ export function BtnLoginSignup() {
               </span>
             </p>
           </div>
-          <div className="other-option">
+          {/* <div className="other-option">
             <ul>
               <li>
                 <a href="">
@@ -281,7 +369,7 @@ export function BtnLoginSignup() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       )}
       {signupappear && (
@@ -324,7 +412,7 @@ export function BtnLoginSignup() {
               </span>
             </p>
           </div>
-          <div className="other-option">
+          {/* <div className="other-option">
             <ul>
               <li>
                 <a href="">
@@ -332,7 +420,7 @@ export function BtnLoginSignup() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       )}
     </div>
@@ -358,4 +446,18 @@ export function BtnLogout() {
     </div>
   );
 }
-
+export function Alertactice() {
+  const { alertactive, setalertactive, wordalert } = useContext(ClassContext);
+  return (
+    <div>
+      <div className={`alert ${alertactive ? "moveout" : ""}`}>
+        <div className="alertword">
+          <p>{wordalert}</p>
+          <a onClick={() => setalertactive(false)}>
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}

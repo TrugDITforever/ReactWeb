@@ -1,9 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Cssfile/bookstore.css";
-import Navbar from "./Navbar";
+import Navbar from "./FunctionforMainPage/Navbar";
 import { Appcontext } from "./Contexxt/Appcontext";
-import { BtnLoginSignup } from "./funtionforsignupAndlogin";
-import { Ads } from "./funtionforsignupAndlogin";
+import {
+  BtnLoginSignup,
+  Alertactice,
+} from "./FunctionforMainPage/funtionforsignupAndlogin";
+import { Ads } from "./FunctionforMainPage/funtionforsignupAndlogin";
 import { Link } from "react-router-dom";
 
 import {
@@ -12,7 +15,7 @@ import {
   Numberpro,
   PlaceforTHCS,
   LeftMenu,
-} from "./Shoppingcart";
+} from "./FunctionforMainPage/Shoppingcart";
 function BookStrore() {
   const [searchvalue, setsearchVlue] = useState("");
   const { products, setProducts } = useContext(Appcontext);
@@ -46,6 +49,36 @@ function BookStrore() {
     // BelongtoSearch();
     setCartItemsShop(cartItems);
   });
+  ///slideshow function
+  const colors = [
+    "https://innhanhsieuviet.com/wp-content/uploads/2021/04/in-poster-quang-cao.jpg",
+    "https://cdn.pixabay.com/photo/2016/02/16/21/07/books-1204029_1280.jpg",
+    "https://images.unsplash.com/photo-1585832770485-e68a5dbfad52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHklMjBkZXNrfGVufDB8fDB8fHww&w=1000&q=80",
+  ];
+  const delay = 2500;
+  const [index, setIndex] = React.useState(0);
+  const timeoutRef = React.useRef(null);
+
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
   return (
     <div>
       <>
@@ -77,7 +110,26 @@ function BookStrore() {
                 </div>
                 <div className="PlaceForBook">
                   <div className="Product">
-                    <div className="ImgStart"></div>
+                    <div className="ImgStart">
+                      <div className="imagewelcome">
+                        <div
+                          className="slideshowsliders"
+                          style={{
+                            transform: `translate3d(${-index * 100}%, 0, 0)`,
+                          }}
+                        >
+                          {colors.map((backgroundColor, index) => (
+                            <div
+                              className="slide"
+                              key={index}
+                              style={{
+                                backgroundImage: `url(${backgroundColor})`,
+                              }}
+                            ></div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                     <BtnLoginSignup></BtnLoginSignup>
                     <div className="DivforBook">
                       <p className="Wordtitle">{Wordtitle}</p>
@@ -118,6 +170,7 @@ function BookStrore() {
                         <PlaceforTHCS></PlaceforTHCS>
                       </> */}
                     </div>
+                    <Alertactice></Alertactice>
                   </div>
                 </div>
               </div>

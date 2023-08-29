@@ -1,25 +1,129 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Cssfile/college.css";
-import Navbar from "./Navbar";
-import Listmenu from "./tabmain";
+import Navbar from "./FunctionforMainPage/Navbar";
+import Listmenu from "./FunctionforMainPage/tabmain";
 import {
   Creategrpinterfaces,
   Ads,
   BtnLoginSignup,
-} from "./funtionforsignupAndlogin";
+  Alertactice,
+} from "./FunctionforMainPage/funtionforsignupAndlogin";
 import logo from "./imagess/logo.png";
 import facebookicon from "./imagess/facebook.png";
 import gmialicon from "./imagess/gmail.png";
 import telephone from "./imagess/telephone-call.png";
-import { AppProvider } from "./Contexxt/Appcontext";
+import { Appcontext } from "./Contexxt/Appcontext";
+import { ClassContext } from "./Contexxt/ClassContext";
 function CollegeTest() {
+  const boxTest = [
+    {
+      id: 1,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Toán năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Toán học",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 2,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Ngữ Văn năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Ngữ Văn",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 3,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Hóa học năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Hóa học",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 4,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Vật Lí năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Vật Lí",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 5,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Địa Lí năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Địa Lí",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 6,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn GDCD năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "GDCD",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 7,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Tiếng Anh năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Tiếng Anh",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 8,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Sinh Học năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Sinh Học",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+    {
+      id: 9,
+      decrip:
+        "Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Lịch Sử năm 2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết",
+      title: "Lịch Sử",
+      images:
+        "https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png",
+    },
+  ];
+  const { appear } = useContext(Appcontext);
+  const { setalertactive, setwordalert } = useContext(ClassContext);
+  const [appeartest, setappeartest] = useState(false);
+  const [images, setImages] = useState("");
+  const { adsapper, setadsapper } = useContext(ClassContext);
+  const handleCheck = (dataimage) => {
+    if (appear === true) {
+      setalertactive(true);
+      setwordalert("Bạn cần đăng nhập vào để xem");
+      setTimeout(() => {
+        setalertactive(false);
+      }, 2000);
+    } else if (appear === false) {
+      setadsapper(true);
+      setappeartest(true);
+      setImages(dataimage);
+    }
+  };
+  const handleDown = (event) => {
+    if (appear === true) {
+      event.preventDefault();
+      setalertactive(true);
+      setwordalert("Bạn cần đăng nhập vào để tải");
+      setTimeout(() => {
+        setalertactive(false);
+      }, 2000);
+    }
+  };
+
   return (
     <div className="CollegeTest">
       <>
         <Navbar></Navbar>
         <div className="container">
           <Ads></Ads>
-
           <div className="main">
             <div className="arrow">
               <a href="#login-place">
@@ -40,364 +144,49 @@ function CollegeTest() {
                   <p>có 4289 tài liệu</p>
                 </div>
                 <div className="placefortest">
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Toán năm 2022
-                        của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Toán học, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
+                  {boxTest.map((item) => (
+                    <div key={item.id} className="box">
+                      <div>
+                        <p>{item.decrip}</p>
                       </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
+                      <div className="title">
+                        <i className="fa-regular fa-folder-open"> </i>
+                        <span>{item.title}, Đề thi THPT quốc gia</span>
                       </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
+                      <div className="eyeandown">
+                        <div className="eye">
+                          <i className="fa-solid fa-eye"></i>
+                          <span>8296</span>
+                        </div>
+                        <div className="downn">
+                          <i className="fa-solid fa-download"></i>{" "}
+                          <span>4002</span>
+                        </div>
                       </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
+                      <div className="author">
+                        <i
+                          className="fa-solid fa-user fa-xl"
+                          style={{ color: "#b7c6e1" }}
+                        ></i>
+                        <span>Tác Giả</span>
                       </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Ngữ Văn năm
-                        2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi
-                        tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Ngữ Văn, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
+                      <div className="hidden">
+                        <div className="read">
+                          <a onClick={() => handleCheck(item.images)}>Review</a>
+                        </div>
+                        <div className="btndownn">
+                          <a
+                            className="down"
+                            href="lEARNweb/powerpoint/Giáo Án.txt"
+                            download
+                            onClick={(event) => handleDown(event)}
+                          >
+                            Download
+                          </a>
+                        </div>
                       </div>
                     </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Hóa học năm
-                        2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi
-                        tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Hóa học, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
-                      </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt" v>
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Vật Lí năm
-                        2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi
-                        tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Vật Lí, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
-                      </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Địa Lí năm
-                        2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi
-                        tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Địa Lí, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
-                      </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn GDCD năm 2022
-                        của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>GDCD, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
-                      </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Tiếng Anh năm
-                        2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi
-                        tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Tiếng Anh, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
-                      </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Sinh Học năm
-                        2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi
-                        tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Sinh Học, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
-                      </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div>
-                      <p>
-                        Đề thi tham khảo kỳ thi THPT Quốc Gia Môn Lịch Sử năm
-                        2022 của Bộ Giáo Dục và Đào Tạo có hướng dẫn giải chi
-                        tiết
-                      </p>
-                    </div>
-                    <div className="title">
-                      <i className="fa-regular fa-folder-open"> </i>
-                      <span>Lịch Sử, Đề thi THPT quốc gia</span>
-                    </div>
-                    <div className="eyeandown">
-                      <div className="eye">
-                        <i className="fa-solid fa-eye"></i>
-                        <span>8296</span>
-                      </div>
-                      <div className="downn">
-                        <i className="fa-solid fa-download"></i>{" "}
-                        <span>4002</span>
-                      </div>
-                    </div>
-                    <div className="author">
-                      <i
-                        className="fa-solid fa-user fa-xl"
-                        style={{ color: "#b7c6e1" }}
-                      ></i>
-                      <span>Tác Giả</span>
-                    </div>
-                    <div className="hidden">
-                      <div className="read">
-                        <a>Review</a>
-                      </div>
-                      <div className="btndownn">
-                        <a className="down" href="./powerpoint/cources.txt">
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -406,200 +195,26 @@ function CollegeTest() {
               <Creategrpinterfaces></Creategrpinterfaces>
             </div>
 
-            <div className="review">
-              <div className="test">
-                <img
-                  src="https://toanmath.com/wp-content/uploads/2022/07/de-thi-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2022-mon-toan.png"
-                  alt=""
-                />
-              </div>
-              <div className="test">
-                <img
-                  src="https://hou.edu.vn/files/anhbaiviet/Images/2019/Thang_06/Dap%20an%20Van%20THPT/Dap%20an%20Van%202019%20p1.png"
-                  alt=""
-                />
-              </div>
-              <div className="test">
-                <img
-                  src="https://media.kenhtuyensinh.vn/images/cms/2019/06/de-thi-mon-hoa-thpt-2019.png"
-                  alt=""
-                />
-              </div>
-              <div className="test">
-                <img
-                  src="https://tailieuhoctap.edu.vn/wp-content/uploads/2022/07/de-thi-ly-2019.jpg"
-                  alt=""
-                />
+            <div className={`review ${appeartest ? "opacity" : ""}`}>
+              <i
+                class="fa-solid fa-circle-xmark"
+                onClick={() => {
+                  setadsapper(false);
+                  setappeartest(false);
+                }}
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  zIndex: 10,
+                  cursor: "pointer",
+                }}
+              ></i>
+              <div className={`test ${appeartest ? "appearrr" : ""}`}>
+                <img src={images} alt="" />
               </div>
             </div>
 
-            {/* {formappear && (
-              <div className="Page-login">
-                <i
-                  className="fa-solid fa-circle-xmark"
-                  onClick={closeform}
-                  id="close"
-                ></i>
-                <form id="loginform">
-                  <h4
-                    style={{
-                      margin: "0px",
-                      padding: "4px 0",
-                      color: "#4285f4",
-                      fontSize: "24px",
-                      fontWeight: "700",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    ĐĂNG NHẬP
-                  </h4>
-                  <div className="login-form" id="loginform">
-                    <label for="username">Tên đăng nhập:</label>
-                    <input type="text" id="username" name="username" required />
-                    <label for="password">Mật khẩu:</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      required
-                    />
-                  </div>
-                  <input
-                    id="login-btn"
-                    className="loginbtnnn"
-                    type="submit"
-                    value="Đăng nhập"
-                  />
-                </form>
-                <div className="NOacc">
-                  <p>
-                    Chưa có tài khoản? <span id="movetosignup">Đăng kí</span>
-                  </p>
-                </div>
-                <div className="other-option">
-                  <ul>
-                    <li>
-                      <a href="">
-                        <i className="fa-brands fa-facebook fa-2xl"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <i className="fa-brands fa-google-plus fa-2xl"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            )}
-            {signupappear && (
-              <div className="Page-signup">
-                <i
-                  className="fa-solid fa-circle-xmark"
-                  id="close2"
-                  onClick={closeform}
-                ></i>
-                <form className="signupform">
-                  <h4
-                    style={{
-                      margin: "0px",
-                      padding: "4px 0",
-                      color: "#4285f4",
-                      fontSize: "24px",
-                      fontWeight: "700",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    ĐĂNG KÍ
-                  </h4>
-                  <div className="login-form" id="signupform">
-                    <label for="username2">Tên đăng nhập:</label>
-                    <input
-                      type="text"
-                      id="username2"
-                      name="username2"
-                      required
-                    />
-                    <label for="password2">Mật khẩu:</label>
-                    <input
-                      type="password"
-                      id="password2"
-                      name="password2"
-                      required
-                    />
-                    <label for="password3">Xác nhận pass:</label>
-                    <input
-                      type="password"
-                      id="password3"
-                      name="password3"
-                      required
-                    />
-                    <label for="password4">Email:</label>
-                    <input type="email" id="email" name="email" required />
-                  </div>
-                  <input id="login-btn2" type="submit" value="Đăng kí" />
-                </form>
-                <div className="Hasacc">
-                  <p>
-                    Đã có tài khoản <span id="btnmovetologin">Đăng nhập</span>
-                  </p>
-                </div>
-                <div className="other-option">
-                  <ul>
-                    <li>
-                      <a href="">
-                        <i className="fa-brands fa-facebook fa-2xl"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            )} */}
-
-            <div className="alert">
-              <div className="alertword">
-                <p>Bạn cần đăng nhập vào trang để xem tài liệu này</p>
-                <a>OK</a>
-              </div>
-            </div>
-            {/* {Creategrp && (
-              <div className="group-create">
-                <i
-                  className="fa-solid fa-circle-xmark"
-                  id="close3"
-                  onClick={closeform}
-                ></i>
-                <form>
-                  <h4
-                    style={{
-                      margin: "0px",
-                      padding: "4px 0",
-                      color: "#4285f4",
-                      fontSize: "24px",
-                      fontWeight: "700",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    TẠO NHÓM
-                  </h4>
-                  <div className="login-form" id="loginform">
-                    <label for="username">Tên Nhóm:</label>
-                    <input type="text" id="username" name="username" required />
-                    <label for="decrip">Mô tả:</label>
-                    <input type="text" id="decrip" name="decrip" required />
-                    <label for="decrip">Thành viên:</label>
-                    <input
-                      type="text"
-                      id="decrip"
-                      name="decrip"
-                      required
-                      placeholder="Nhập email của thành viên"
-                    />
-                  </div>
-                  <input id="login-btn" type="submit" value="Tạo Nhóm" />
-                </form>
-              </div>
-            )} */}
+            <Alertactice></Alertactice>
           </div>
           <footer>
             <div className="footer" id="footer">

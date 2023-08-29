@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import Navbar from "./Navbar";
-import Listmenu from "./tabmain";
+import Navbar from "./FunctionforMainPage/Navbar";
+import Listmenu from "./FunctionforMainPage/tabmain";
 import {
   Creategrpinterfaces,
   Ads,
   BtnLoginSignup,
-} from "./funtionforsignupAndlogin";
+  Alertactice,
+} from "./FunctionforMainPage/funtionforsignupAndlogin";
 import "./Cssfile/style.css";
 import team from "./imagess/team.png";
 import cup from "./imagess/cup.png";
@@ -13,23 +14,22 @@ import logo from "./imagess/logo.png";
 import facebookicon from "./imagess/facebook.png";
 import gmialicon from "./imagess/gmail.png";
 import telephone from "./imagess/telephone-call.png";
-import Post from "./postcomments";
+import Post from "./FunctionforMainPage/postcomments";
 function Study() {
   const [showArrow, setShowArrow] = useState(false);
   useEffect(() => {
-    const infor = document.querySelector(".infor");
     const handleScroll = () => {
-      const scroll = infor.scrollTop;
+      const scroll = window.scrollY;
       if (scroll >= 100) {
         setShowArrow(true);
       } else {
         setShowArrow(false);
       }
     };
-    infor.addEventListener("scroll", handleScroll);
-    return () => {
-      infor.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll);
+    // return () => {
+    //   window.removeEventListener("scroll", handleScroll);
+    // };
   });
   const [searchforsubject, setsearch] = useState("");
   const userStatus = [
@@ -99,7 +99,7 @@ function Study() {
           <div className="main">
             {showArrow && (
               <div className="arrow">
-                <a href="#login-place">
+                <a href="#">
                   <i className="fa-solid fa-arrow-up fa-2xl"></i>
                 </a>
               </div>
@@ -145,7 +145,6 @@ function Study() {
                       type="text"
                       onChange={(e) => setsearch(e.target.value)}
                       placeholder="Tìm kiếm môn cần hỏi...... "
-                      // autoComplete="none"
                       required
                     />
 
@@ -157,7 +156,7 @@ function Study() {
               {findsubjects.map((user, index) => (
                 <div
                   key={user.id}
-                  style={{ marginLeft: index % 2 === 0 ? "10rem" : "6rem" }}
+                  // style={{ marginLeft: index % 2 === 0 ? "10rem" : "" }}
                   className="box1"
                 >
                   <div
@@ -189,34 +188,6 @@ function Study() {
                   </div>
                 </div>
               ))}
-
-              {/* <div className="box2">
-                <div className="pic2">
-                  <ul>
-                    <li>
-                      <a>
-                        <img width="40px" src={team} alt="" />
-                        Trần Bảo Quân
-                      </a>
-                    </li>
-                    <li className="space">
-                      <a href=""> Vật Lí </a>
-                    </li>
-                    <li className="space">
-                      <a href=""> 15 giờ trước </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="comment2">
-                  <p>Giải thích bài dưới giúp em với ạ!!</p>
-                  <a>
-                    <img
-                      src="https://assets.isu.pub/document-structure/221220100117-2285af387a32251e38e80d8589d7bfb5/v1/dcef8b126499e96486dbff629acf0020.jpeg"
-                      alt=""
-                    />
-                  </a>
-                </div>
-              </div> */}
               <div className="line"></div>
               <div className="reward">
                 <div className="iconre1">
@@ -310,142 +281,14 @@ function Study() {
             <div className="last">
               <Creategrpinterfaces></Creategrpinterfaces>
             </div>
-            {/* {formappear && (
-              <div className="Page-login">
-                <i
-                  className="fa-solid fa-circle-xmark"
-                  onClick={closeform}
-                  id="close"
-                ></i>
-                <form id="loginform">
-                  <h4
-                    style={{
-                      margin: "0px",
-                      padding: "4px 0",
-                      color: "#4285f4",
-                      fontSize: "24px",
-                      fontWeight: "700",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    ĐĂNG NHẬP
-                  </h4>
-                  <div className="login-form" id="loginform">
-                    <label for="username">Tên đăng nhập:</label>
-                    <input type="text" id="username" name="username" required />
-                    <label for="password">Mật khẩu:</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      required
-                    />
-                  </div>
-                  <input
-                    id="login-btn"
-                    className="loginbtnnn"
-                    type="submit"
-                    value="Đăng nhập"
-                  />
-                </form>
-                <div className="NOacc">
-                  <p>
-                    Chưa có tài khoản? <span id="movetosignup">Đăng kí</span>
-                  </p>
-                </div>
-                <div className="other-option">
-                  <ul>
-                    <li>
-                      <a href="">
-                        <i className="fa-brands fa-facebook fa-2xl"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <i className="fa-brands fa-google-plus fa-2xl"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            )} */}
-
-            <div className="alert">
-              <div className="alertword">
-                <p>Bạn cần đăng nhập vào trang để xem tài liệu này</p>
-                <a>OK</a>
-              </div>
-            </div>
-            {/* {signupappear && (
-              <div className="Page-signup">
-                <i
-                  className="fa-solid fa-circle-xmark"
-                  id="close2"
-                  onClick={closeform}
-                ></i>
-                <form className="signupform">
-                  <h4
-                    style={{
-                      margin: "0px",
-                      padding: "4px 0",
-                      color: "#4285f4",
-                      fontSize: "24px",
-                      fontWeight: "700",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    ĐĂNG KÍ
-                  </h4>
-                  <div className="login-form" id="signupform">
-                    <label for="username2">Tên đăng nhập:</label>
-                    <input
-                      type="text"
-                      id="username2"
-                      name="username2"
-                      required
-                    />
-                    <label for="password2">Mật khẩu:</label>
-                    <input
-                      type="password"
-                      id="password2"
-                      name="password2"
-                      required
-                    />
-                    <label for="password3">Xác nhận pass:</label>
-                    <input
-                      type="password"
-                      id="password3"
-                      name="password3"
-                      required
-                    />
-                    <label for="password4">Email:</label>
-                    <input type="email" id="email" name="email" required />
-                  </div>
-                  <input id="login-btn2" type="submit" value="Đăng kí" />
-                </form>
-                <div className="Hasacc">
-                  <p>
-                    Đã có tài khoản <span id="btnmovetologin">Đăng nhập</span>
-                  </p>
-                </div>
-                <div className="other-option">
-                  <ul>
-                    <li>
-                      <a href="">
-                        <i className="fa-brands fa-facebook fa-2xl"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            )} */}
+            <Alertactice></Alertactice>
           </div>
           <footer>
             <div className="footer" id="footer">
               <div className="last-page">
                 <div className="place-for-ad" id="contact">
                   <div className="main-word" style={{ color: "white" }}>
-                    <a href="#">
+                    <a>
                       <img src={logo} alt="logo" />
                       LEARN X2
                     </a>
@@ -455,9 +298,9 @@ function Study() {
                       các hội nhóm. Cơ hội hợp tác cùng các bạn mới ra trường.
                       Các dạng đề ôn luyện thường xuyên được cập nhật.
                     </p>
-                    <p1>
+                    <p>
                       <strong>HỌC - HỌC NỮA - HỌC MÃI</strong>
-                    </p1>
+                    </p>
                   </div>
                 </div>
                 <div className="privacy">

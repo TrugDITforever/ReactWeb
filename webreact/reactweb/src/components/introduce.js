@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Cssfile/introduc.css";
-import Navbar from "./Navbar";
 import logo from "./imagess/logo.png";
 import facebookicon from "./imagess/facebook.png";
 import gmialicon from "./imagess/gmail.png";
@@ -58,17 +57,25 @@ function Introduce() {
           <div class="tabmenu">
             <ul id="listmainmenu">
               <li>
-                <a href="#home"> Trang chủ </a>
+                <a href="#home">
+                  <i class="fa-solid fa-house-circle-check"></i> Trang chủ{" "}
+                </a>
               </li>
               <li>
-                <a href="#about"> Lộ Trình Học </a>
+                <a href="#about">
+                  <i class="fa-solid fa-route"></i> Lộ Trình Học{" "}
+                </a>
               </li>
 
               <li>
-                <a href="#llast"> Bắt đầu </a>
+                <a href="#llast">
+                  <i class="fa-solid fa-play"></i> Bắt đầu{" "}
+                </a>
               </li>
               <li>
-                <a href="#footer"> Liên hệ</a>
+                <a href="#footer">
+                  <i class="fa-solid fa-phone"></i> Liên hệ
+                </a>
               </li>
             </ul>
             <div class="mobbilebtn">

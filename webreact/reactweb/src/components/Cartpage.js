@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./FunctionforMainPage/Navbar";
 import "./Cssfile/Cartpage.css";
 import { AppProvider } from "./Contexxt/Appcontext";
-import { Tablecart, Boxrightlayout } from "./Shoppingcart";
+import { Tablecart, Boxrightlayout } from "./FunctionforMainPage/Shoppingcart";
 function Cartpage() {
   return (
     <>

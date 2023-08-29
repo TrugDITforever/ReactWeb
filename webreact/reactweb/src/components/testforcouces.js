@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
+import Navbar from "./FunctionforMainPage/Navbar";
 import "./Cssfile/testforcourse.css";
-import Listmenu from "./tabmain";
+import Listmenu from "./FunctionforMainPage/tabmain";
 import {
   Creategrpinterfaces,
   Ads,
   BtnLoginSignup,
-} from "./funtionforsignupAndlogin";
+} from "./FunctionforMainPage/funtionforsignupAndlogin";
 import logo from "./imagess/logo.png";
 import homeicon from "./imagess/homeicon.png";
 import facebookicon from "./imagess/facebook.png";
@@ -34,7 +34,36 @@ function Test() {
       infor.removeEventListener("scroll", handleScroll);
     };
   });
+  ///slideshow
+  const colors = [
+    "https://thuthuatnhanh.com/wp-content/uploads/2022/06/Hinh-anh-hoc-tap-chill.jpg",
+    "https://i.pinimg.com/originals/a7/f7/0b/a7f70b0e09b4e48ded3a11786d583385.png",
+    "https://images.unsplash.com/photo-1585832770485-e68a5dbfad52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHklMjBkZXNrfGVufDB8fDB8fHww&w=1000&q=80",
+  ];
+  const delay = 2500;
+  const [index, setIndex] = React.useState(0);
+  const timeoutRef = React.useRef(null);
 
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
   return (
     <div className="home">
       <>
@@ -60,11 +89,19 @@ function Test() {
 
                 <div className="suround">
                   <div className="imagewelcome">
-                    <div className="welcome">
-                      <p>
-                        Bạn càng đọc nhiều, bạn càng biết nhiều. Bạn càng học
-                        nhiều, bạn càng đi nhiều
-                      </p>
+                    <div
+                      className="slideshowsliders"
+                      style={{
+                        transform: `translate3d(${-index * 100}%, 0, 0)`,
+                      }}
+                    >
+                      {colors.map((backgroundColor, index) => (
+                        <div
+                          className="slide"
+                          key={index}
+                          style={{ backgroundImage: `url(${backgroundColor})` }}
+                        ></div>
+                      ))}
                     </div>
                   </div>
                   <div className="menucource">

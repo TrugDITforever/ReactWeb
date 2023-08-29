@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Appcontext } from "./Contexxt/Appcontext";
+import { Appcontext } from "../Contexxt/Appcontext";
 import { Link } from "react-router-dom";
 export function LeftMenu() {
   const { setWordtitle } = useContext(Appcontext);

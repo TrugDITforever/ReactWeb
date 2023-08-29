@@ -13,25 +13,27 @@ import Cartpage from "./components/Cartpage";
 import Introduce from "./components/introduce";
 import Userinfo from "./components/userinfo";
 import { AppProvider } from "./components/Contexxt/Appcontext";
-
+import { ClassProvider } from "./components/Contexxt/ClassContext";
+// import "./App.css";
 const App = () => {
   return (
     <AppProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Study />} />
-          <Route path="/allcources" element={<Allclass />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/test9to10" element={<Test9to10 />} />
-          <Route path="/collegetest" element={<CollegeTest />} />
-          <Route path="/introduce" element={<Introduce />} />
-          <Route path="/userinfo" element={<Userinfo />} />
-          <Route path="/bookstore" element={<BookStrore />} />
-          <Route path="/cartpage" element={<Cartpage />} />
-        </Routes>
-      </BrowserRouter>
+      <ClassProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Study />} />
+            <Route path="/allcources" element={<Allclass />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/test9to10" element={<Test9to10 />} />
+            <Route path="/collegetest" element={<CollegeTest />} />
+            <Route path="/introduce" element={<Introduce />} />
+            <Route path="/userinfo" element={<Userinfo />} />
+            <Route path="/bookstore" element={<BookStrore />} />
+            <Route path="/cartpage" element={<Cartpage />} />
+          </Routes>
+        </BrowserRouter>
+      </ClassProvider>
     </AppProvider>
   );
 };
-
 export default App;
