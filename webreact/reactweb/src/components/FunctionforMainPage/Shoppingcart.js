@@ -33,7 +33,7 @@ export function LeftMenu() {
         <div className="BookMenu">
           <div className="Iconbook">
             <p>
-              <i class="fa-solid fa-book"></i>
+              <i className="fa-solid fa-book"></i>
               <span>Danh Mục</span>
             </p>
           </div>
@@ -159,8 +159,14 @@ export function Numberpro() {
 //   );
 // }
 export function Cartmoveout() {
-  const { cartappear, updatecart, cartItems, setCartItems, setCartCount } =
-    useContext(Appcontext);
+  const {
+    cartappear,
+    updatecart,
+    cartItems,
+    setCartItems,
+    setCartCount,
+    setCartItemsShop,
+  } = useContext(Appcontext);
   const Deletecart = (productID, proquantity) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== productID);
     setCartItems(updatedCartItems);
@@ -186,11 +192,11 @@ export function Cartmoveout() {
   const cartItemslength = cartItems.length === 0;
   return (
     <div>
-      <i class="fa-solid fa-cart-shopping" onClick={handleclickcart}></i>
+      <i className="fa-solid fa-cart-shopping" onClick={handleclickcart}></i>
       <div className={`Cartplace ${cartappear ? "appearcart" : ""}`}>
         <div className="iconcartremove">
           <i
-            class="fa-regular fa-circle-xmark fa-xl"
+            className="fa-regular fa-circle-xmark fa-xl"
             onClick={handleclickcartremove}
           ></i>
         </div>
@@ -240,7 +246,10 @@ export function Cartmoveout() {
                     <Link
                       to="/cartpage"
                       className="watch-cart"
-                      onClick={() => updatecart(false)}
+                      onClick={() => {
+                        updatecart(false);
+                        setCartItemsShop(cartItems);
+                      }}
                     >
                       XEM GIỎ HÀNG
                     </Link>
@@ -258,13 +267,8 @@ export function Cartmoveout() {
   );
 }
 export function Tablecart() {
-  const {
-    cartItemsshop,
-    setCartItemsShop,
-    setCartItems,
-    setCartCount,
-    cartCount,
-  } = useContext(Appcontext);
+  const { cartItemsshop, setCartItemsShop, setCartItems, setCartCount } =
+    useContext(Appcontext);
   const PlusQuantity = (itemsquantity) => {
     const exisstItems = cartItemsshop.find(
       (item) => item.id === itemsquantity.id
@@ -357,7 +361,7 @@ export function Tablecart() {
                 </div>
                 <div className="icon-delete">
                   <a onClick={() => deleteCartItems(cartItem)}>
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </a>
                 </div>
               </div>

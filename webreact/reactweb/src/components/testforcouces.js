@@ -4,9 +4,9 @@ import "./Cssfile/testforcourse.css";
 import Listmenu from "./FunctionforMainPage/tabmain";
 import {
   Creategrpinterfaces,
-  Ads,
   BtnLoginSignup,
 } from "./FunctionforMainPage/funtionforsignupAndlogin";
+import { Ads } from "./FunctionforMainPage/Ads";
 import logo from "./imagess/logo.png";
 import homeicon from "./imagess/homeicon.png";
 import facebookicon from "./imagess/facebook.png";

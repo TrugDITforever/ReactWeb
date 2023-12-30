@@ -4,10 +4,10 @@ import Navbar from "./FunctionforMainPage/Navbar";
 import Listmenu from "./FunctionforMainPage/tabmain";
 import {
   Creategrpinterfaces,
-  Ads,
   BtnLoginSignup,
   Alertactice,
 } from "./FunctionforMainPage/funtionforsignupAndlogin";
+import { Ads } from "./FunctionforMainPage/Ads";
 import logo from "./imagess/logo.png";
 import facebookicon from "./imagess/facebook.png";
 import gmialicon from "./imagess/gmail.png";
@@ -197,7 +197,7 @@ function CollegeTest() {
 
             <div className={`review ${appeartest ? "opacity" : ""}`}>
               <i
-                class="fa-solid fa-circle-xmark"
+                className="fa-solid fa-circle-xmark"
                 onClick={() => {
                   setadsapper(false);
                   setappeartest(false);

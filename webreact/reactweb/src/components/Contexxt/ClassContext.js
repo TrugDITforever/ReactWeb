@@ -7,6 +7,8 @@ export const ClassProvider = ({ children }) => {
   const [alertactive, setalertactive] = useState(false);
   const [wordalert, setwordalert] = useState("");
   const [adsapper, setadsapper] = useState(false);
+  const [comments, commentUpdate] = useState([]);
+  const [user, getuser] = useState([]);
   return (
     <ClassContext.Provider
       value={{
@@ -22,6 +24,10 @@ export const ClassProvider = ({ children }) => {
         setwordalert,
         adsapper,
         setadsapper,
+        comments,
+        commentUpdate,
+        user,
+        getuser,
       }}
     >
       {children}

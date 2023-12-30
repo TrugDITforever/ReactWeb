@@ -6,19 +6,15 @@ import {
   BtnLoginSignup,
   Alertactice,
 } from "./FunctionforMainPage/funtionforsignupAndlogin";
-import { Ads } from "./FunctionforMainPage/funtionforsignupAndlogin";
-import { Link } from "react-router-dom";
-
+import { Ads } from "./FunctionforMainPage/Ads";
 import {
   Cartmoveout,
-  PlaceforTH,
   Numberpro,
-  PlaceforTHCS,
   LeftMenu,
 } from "./FunctionforMainPage/Shoppingcart";
 function BookStrore() {
   const [searchvalue, setsearchVlue] = useState("");
-  const { products, setProducts } = useContext(Appcontext);
+  const { products } = useContext(Appcontext);
   const { setCartCount } = useContext(Appcontext);
   const { cartItems, setCartItems, setCartItemsShop, Wordtitle } =
     useContext(Appcontext);
@@ -34,7 +30,6 @@ function BookStrore() {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
   };
-
   ///function search and filter products
   const returnItems = products.filter((product) =>
     product.name.toLowerCase().includes(searchvalue.toLowerCase())
@@ -44,11 +39,9 @@ function BookStrore() {
     texttosearch === "all"
       ? returnItems
       : returnItems.filter((product) => product.decrip === texttosearch);
-  useEffect(() => {
-    console.log(returnbyfilter);
-    // BelongtoSearch();
-    setCartItemsShop(cartItems);
-  });
+  // useEffect(() => {
+
+  // });
   ///slideshow function
   const colors = [
     "https://innhanhsieuviet.com/wp-content/uploads/2021/04/in-poster-quang-cao.jpg",
@@ -86,6 +79,7 @@ function BookStrore() {
         <div className="container">
           <Ads></Ads>
           <div className="InterfaceBookStore">
+            {/* from shoppingcart */}
             <LeftMenu></LeftMenu>
             <div className="RightMenu">
               <div className="BookMenu">
@@ -99,7 +93,7 @@ function BookStrore() {
                         placeholder="Tìm kiếm sản phẩm của bạn ở đây...."
                       ></input>
                       <button type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm
+                        <i className="fa-solid fa-magnifying-glass"></i>Tìm kiếm
                       </button>
                     </form>
                   </div>

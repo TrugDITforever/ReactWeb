@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import homeicon from "../imagess/homeicon.png";
-import { Appcontext } from "../Contexxt/Appcontext";
 import { ClassContext } from "../Contexxt/ClassContext";
 function Listmenu() {
   const listclass = [
@@ -42,7 +40,8 @@ function Listmenu() {
       class: 12,
     },
   ];
-  const { idexseleac, setwwordClass, setindex } = useContext(ClassContext);
+  const { setwwordClass } = useContext(ClassContext);
+  const [idexseleac, setindex] = useState();
   return (
     <div>
       {" "}
@@ -50,10 +49,10 @@ function Listmenu() {
         <div className="listword">
           <a className="home">
             <i
-              class="fa-solid fa-graduation-cap"
+              className="fa-solid fa-graduation-cap"
               style={{ color: "#3E606F", fontSize: "2rem" }}
             ></i>
-            MỤC LỤC
+            Giáo án
           </a>
           <h5>GIÁO ÁN HỌC CƠ BẢN</h5>
         </div>
@@ -66,12 +65,11 @@ function Listmenu() {
                   className={`${
                     idexseleac === index
                       ? `classname-selected`
-                      : `classname-selected-${listclass.class}`
+                      : `classname-selected-none`
                   }`}
                   onClick={() => {
-                    setwwordClass(listclass.class);
                     setindex(index);
-                    // console.log("sdfasdf");
+                    setwwordClass(listclass.class);
                   }}
                 >
                   Lớp {listclass.class}
@@ -85,28 +83,24 @@ function Listmenu() {
         <div className="listword2">
           <h1 className="btnon">
             <i
-              class="fa-solid fa-book-open-reader"
+              className="fa-solid fa-book-open-reader"
               style={{
                 fontSize: "2rem",
                 paddingRight: "5px",
                 color: "#1D3E53",
               }}
             ></i>
-            ÔN THI
+            Ôn Thi
           </h1>
           <h4>Lộ trình ôn thi các khóa</h4>
         </div>
         <div className="liststudy2">
           <ul>
             <li>
-              <a href="">
-                <Link to="/test9to10">Đề thi lớp 9 lên 10</Link>
-              </a>
+              <Link to="/test9to10">Đề thi lớp 9 lên 10</Link>
             </li>
             <li>
-              <a href="">
-                <Link to="/collegetest">Đề thi THPT quốc gia</Link>
-              </a>
+              <Link to="/collegetest">Đề thi THPT quốc gia</Link>
             </li>
           </ul>
         </div>
@@ -115,10 +109,10 @@ function Listmenu() {
         <div className="listword3">
           <h1 className="btnluyen">
             <i
-              class="fa-regular fa-address-book"
+              className="fa-regular fa-address-book"
               style={{ fontSize: "2rem" }}
             ></i>
-            LUYỆN ĐỀ
+            Luyện đề
           </h1>
           <h4>Các dạng đề hay qua các năm</h4>
         </div>

@@ -3,20 +3,28 @@ import Navbar from "./FunctionforMainPage/Navbar";
 import Listmenu from "./FunctionforMainPage/tabmain";
 import {
   Creategrpinterfaces,
-  Ads,
   BtnLoginSignup,
   Alertactice,
 } from "./FunctionforMainPage/funtionforsignupAndlogin";
+import { PostGroup } from "./FunctionforMainPage/PostGroup";
+import { Ads } from "./FunctionforMainPage/Ads";
+import { PostStatus } from "./FunctionforMainPage/postStatus";
 import "./Cssfile/style.css";
 import team from "./imagess/team.png";
 import cup from "./imagess/cup.png";
-import logo from "./imagess/logo.png";
+import mathpic from "./uploadfile/mathpic.png";
+import logo from "./imagess/loggo.png";
 import facebookicon from "./imagess/facebook.png";
 import gmialicon from "./imagess/gmail.png";
 import telephone from "./imagess/telephone-call.png";
 import Post from "./FunctionforMainPage/postcomments";
+import { Appcontext } from "./Contexxt/Appcontext";
+import axios from "axios";
 function Study() {
   const [showArrow, setShowArrow] = useState(false);
+  const [searchforsubject, setsearch] = useState("");
+  const [userStatus, setuserStatus] = useState([]);
+  const { setpoststatus } = useContext(Appcontext);
   useEffect(() => {
     const handleScroll = () => {
       const scroll = window.scrollY;
@@ -27,69 +35,25 @@ function Study() {
       }
     };
     window.addEventListener("scroll", handleScroll);
-    // return () => {
-    //   window.removeEventListener("scroll", handleScroll);
-    // };
-  });
-  const [searchforsubject, setsearch] = useState("");
-  const userStatus = [
-    {
-      id: 1,
-      name: "Lê Quang Nhã",
-      subjects: "Toán học",
-      time: 1,
-      notes: "Giải giúp em bài trên được không ạ",
-      image:
-        "https://2.bp.blogspot.com/-N5M0I9_1tks/XkElu5uQXII/AAAAAAAAARs/s6sQJXhXzC8CtdmKO3dNv9wKnMAsodQBwCLcBGAsYHQ/s1600/trac-nghiem-gioi-han-1.png",
-    },
-    {
-      id: 2,
-      name: "Tạ Quang Anh",
-      subjects: "Hóa học",
-      time: 15,
-      notes: "Giải giúp em bài trên được không ạ",
-      image:
-        "https://i.vdoc.vn/data/image/2023/03/07/16781982969496425815228314447288.jpg",
-    },
-    {
-      id: 3,
-      name: "Nguyễn Việt Hưng",
-      subjects: "Toán học",
-      time: 11,
-      notes: "Giải giúp em bài trên được không ạ",
-      image:
-        "https://api.toploigiai.vn/uploads/anh-bai-viet/giai-toan-11-nang-cao/chuong-4-dai-so-va-giai-tich/giai-toan-11-nang-cao-bai-59-trang-178-dai-so-va-giai-tich.png",
-    },
-    {
-      id: 4,
-      name: "Trần Bảo Quân",
-      subjects: "Vật lí",
-      time: 3,
-      notes: "Giải giúp em bài trên được không ạ",
-      image:
-        "https://assets.isu.pub/document-structure/221220100117-2285af387a32251e38e80d8589d7bfb5/v1/dcef8b126499e96486dbff629acf0020.jpeg",
-    },
-    {
-      id: 5,
-      name: "Nguyễn Bảo Ngọc",
-      subjects: "Tiếng anh",
-      time: 3,
-      notes: "Giải giúp em bài trên được không ạ",
-      image:
-        "https://giaovienvietnam.com/wp-content/uploads/2021/02/Screen-Shot-2021-02-21-at-23.35.46.png",
-    },
-    {
-      id: 6,
-      name: "Khánh Linh",
-      subjects: "Tiếng anh",
-      time: 3,
-      notes: "Giải giúp em bài trên được không ạ",
-      image: "https://hocmai.vn/kho-tai-lieu/documents/1590396216/page-2.png",
-    },
-  ];
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [showArrow]);
+  // getdata from backend
+  useEffect(() => {
+    async function getdata() {
+      const res = await axios.get("/v1/usestatus");
+      return res;
+    }
+    getdata().then((res) => {
+      setuserStatus(res.data.datastatus);
+    });
+  }, []);
+  //searching place for statuss
   const findsubjects = userStatus.filter((status) =>
-    status.subjects.toLowerCase().includes(searchforsubject.toLowerCase())
+    status.subject.toLowerCase().includes(searchforsubject.toLowerCase())
   );
+  // async function
   return (
     <div className="study">
       <>
@@ -110,55 +74,41 @@ function Study() {
             <div className="infor" style={{ backgroundImage: "none" }}>
               <div className="outsideloginplace">
                 <BtnLoginSignup></BtnLoginSignup>
-                {/* <div className="login-place" id="login-place">
-                  <div className="word">
-                    <p>
-                      Hãy tham gia vào để trở thành thành viên của
-                      <strong>LEARN X2</strong> <br />
-                      và tham gia hỏi đáp cùng các bạn khác!!!
-                      <br />
-                    </p>
-                  </div>
-                  <div className="login">
-                    <button id="btn" onClick={clickappear}>
-                      Đăng nhập
-                    </button>
-                    <button id="btn2" onClick={clickappear2}>
-                      Đăng kí
-                    </button>
-                  </div>
-                </div> */}
               </div>
-
               <div className="ask">
                 <a href="">
-                  {" "}
                   <img src={team} alt="" />
-                  HỎI VÀ ĐÁP{" "}
+                  HỎI VÀ ĐÁP
                 </a>
               </div>
               <div className="under-ask">
                 <div className="ask-box">
-                  <form action="" onSubmit={(e) => e.preventDefault()}>
+                  <form id="search-form" onSubmit={(e) => e.preventDefault()}>
                     <input
                       id="ask-place"
                       type="text"
+                      placeholder="Tìm kiếm môn học...... "
                       onChange={(e) => setsearch(e.target.value)}
-                      placeholder="Tìm kiếm môn cần hỏi...... "
-                      required
                     />
-
-                    <input type="submit" value="Search" />
+                    <a>
+                      <i className="fa-solid fa-magnifying-glass"></i>
+                    </a>
                   </form>
+                </div>
+                <div className="btnpost">
+                  <button
+                    className="post-button"
+                    onClick={() => {
+                      setpoststatus(true);
+                    }}
+                  >
+                    Đăng bài
+                  </button>
                 </div>
               </div>
 
               {findsubjects.map((user, index) => (
-                <div
-                  key={user.id}
-                  // style={{ marginLeft: index % 2 === 0 ? "10rem" : "" }}
-                  className="box1"
-                >
+                <div key={user.id} className="box1">
                   <div
                     className="pic1"
                     style={{
@@ -169,22 +119,43 @@ function Study() {
                       <li>
                         <a>
                           <img width="40px" src={team} alt="" />
-                          {user.name}
+                          {user.nameuser}
                         </a>
                       </li>
                       <li className="space">
-                        <a href=""> {user.subjects}</a>
+                        <a href=""> {user.subject}</a>
                       </li>
                       <li className="space">
-                        <a href=""> {user.time} giờ trước </a>
+                        <a href=""> 1 giờ trước </a>
                       </li>
                     </ul>
                   </div>
                   <div className="comment1">
-                    <p>{user.notes}</p>
+                    <p>{user.cmtStatus}</p>
                     <a>
-                      <img src={user.image} alt="" />
+                      <img
+                        src={
+                          user.image == null
+                            ? "https://toanmath.com/wp-content/uploads/2017/03/bai-tap-trac-nghiem-mat-cau-hinh-cau-khoi-cau-nguyen-van-huy.png"
+                            : mathpic
+                        }
+                        alt={`${user.image}`}
+                      />
                     </a>
+                  </div>
+                  <div className="place_tolike">
+                    <ul>
+                      <li>
+                        <i className="fa-solid fa-heart"></i>Thích
+                      </li>
+                      <li>
+                        <i className="fa-regular fa-comment"></i>Trả lời
+                      </li>
+                      <li>
+                        <i className="fa-regular fa-share-from-square"></i>Chia
+                        sẻ
+                      </li>
+                    </ul>
                   </div>
                 </div>
               ))}
@@ -194,7 +165,7 @@ function Study() {
                   <img src={cup} alt="" />
                 </div>
                 <div className="reward-word">
-                  <h1>BẢNG VINH DANH</h1>
+                  <h1>Học sinh tiêu biểu</h1>
                 </div>
                 <div className="iconre2">
                   <img src={cup} alt="" />
@@ -277,10 +248,11 @@ function Study() {
                 </div>
               </div>
             </div>
-
+            <PostStatus />
             <div className="last">
               <Creategrpinterfaces></Creategrpinterfaces>
             </div>
+            <PostGroup />
             <Alertactice></Alertactice>
           </div>
           <footer>

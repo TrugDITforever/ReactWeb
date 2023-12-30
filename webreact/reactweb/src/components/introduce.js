@@ -41,45 +41,45 @@ function Introduce() {
   });
   return (
     <div>
-      <header class="head">
-        <div class="menu">
-          <div class="logo">
+      <header className="head">
+        <div className="menu">
+          <div className="logo">
             <a href="">
               <img src={logo} alt="" />
               LEARN X2
             </a>
           </div>
-          <div class="slogan">
+          <div className="slogan">
             <h1>LEARN BY YOURSELF</h1>
           </div>
         </div>
-        <section class="tab-mainmenu">
-          <div class="tabmenu">
+        <section className="tab-mainmenu">
+          <div className="tabmenu">
             <ul id="listmainmenu">
               <li>
                 <a href="#home">
-                  <i class="fa-solid fa-house-circle-check"></i> Trang chủ{" "}
+                  <i className="fa-solid fa-house-circle-check"></i> Trang chủ{" "}
                 </a>
               </li>
               <li>
                 <a href="#about">
-                  <i class="fa-solid fa-route"></i> Lộ Trình Học{" "}
+                  <i className="fa-solid fa-route"></i> Lộ Trình Học{" "}
                 </a>
               </li>
 
               <li>
                 <a href="#llast">
-                  <i class="fa-solid fa-play"></i> Bắt đầu{" "}
+                  <i className="fa-solid fa-play"></i> Bắt đầu{" "}
                 </a>
               </li>
               <li>
                 <a href="#footer">
-                  <i class="fa-solid fa-phone"></i> Liên hệ
+                  <i className="fa-solid fa-phone"></i> Liên hệ
                 </a>
               </li>
             </ul>
-            <div class="mobbilebtn">
-              <i class="fa-solid fa-bars"></i>
+            <div className="mobbilebtn">
+              <i className="fa-solid fa-bars"></i>
             </div>
           </div>
         </section>

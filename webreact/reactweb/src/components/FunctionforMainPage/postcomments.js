@@ -1,22 +1,35 @@
+import { ClassContext } from "../Contexxt/ClassContext";
+import { Appcontext } from "../Contexxt/Appcontext";
 import users from "../imagess/user.png";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 function Post() {
   const [searchvalue, searchvalueUpdate] = useState("");
-  const [comments, commentUpdate] = useState([]);
-  const handleCreateComment = () => {
-    if (searchvalue.trim() !== "") {
-      const newComment = {
-        name: "NO Name",
-        content: searchvalue,
-      };
-      commentUpdate([newComment, ...comments]);
-      searchvalueUpdate("");
-    }
-  };
+  const { appear } = useContext(Appcontext);
+  const { comments, commentUpdate, user, setalertactive, setwordalert } =
+    useContext(ClassContext);
   const handleclick = (e) => {
     searchvalueUpdate(e.target.value);
   };
   const searchvalelenght = searchvalue.length > 0;
+  const handleCreateComment = () => {
+    if (appear === false && user) {
+      // Kiểm tra user có tồn tại
+      if (searchvalue.trim() !== "") {
+        const newComment = {
+          name: user[0].nameuser,
+          content: searchvalue,
+        };
+        commentUpdate([newComment, ...comments]);
+        searchvalueUpdate("");
+      }
+    } else {
+      setalertactive(true);
+      setwordalert("Bạn cần đăng nhập vào để bình luận");
+      setTimeout(() => {
+        setalertactive(false);
+      }, 3000);
+    }
+  };
   return (
     <div>
       <div className="box-cmt">

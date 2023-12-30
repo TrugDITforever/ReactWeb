@@ -4,11 +4,10 @@ import { AppProvider, Appcontext } from "./Contexxt/Appcontext";
 import { useContext, useEffect, useState } from "react";
 import { BtnLogout } from "./FunctionforMainPage/funtionforsignupAndlogin";
 function Userinfo() {
-  const [username, setusername] = useState("Bao Ngoc");
+  const [username, setusername] = useState("Trung Do");
   const [phonenumber, setphonenumber] = useState("0911163990");
-  const [email, setemail] = useState("Bao Ngoc@gmail.com");
+  const [email, setemail] = useState("dotrung1512@gmail.com");
   const [address, setaddress] = useState("Vinh Linh, Viet Nam");
-
   const valueName = (e) => {
     setusername(e.target.value);
   };
@@ -38,7 +37,6 @@ function Userinfo() {
   const [newpass, setpass] = useState("");
   const [oldepassword, setepassword] = useState("");
   const [newpassConfirm, setpassConfirm] = useState("");
-
   const [wwordConfirm, setwwordConfirm] = useState("");
   const [wwordConfirm2, setwwordConfirm2] = useState("");
 
@@ -66,18 +64,18 @@ function Userinfo() {
             <div className="Menuinfo">
               <div className="MainStuff">
                 <div className="Tabmenu">
-                  <i class="fa-solid fa-gear"></i>
+                  <i className="fa-solid fa-gear"></i>
                 </div>
                 <div className="WordInfo">
                   <h1>Trung tâm tài khoản</h1>
                   <div className="wordtoclick">
                     <p onClick={Isvisible1}>
-                      <i class="fa-regular fa-user"></i>Thông tin tài khoản
+                      <i className="fa-regular fa-user"></i>Thông tin tài khoản
                     </p>
                   </div>
                   <div className="wordtoclick">
                     <p onClick={Isvisible2}>
-                      <i class="fa-solid fa-shield-halved"></i>Mật khẩu
+                      <i className="fa-solid fa-shield-halved"></i>Mật khẩu
                     </p>
                   </div>
                 </div>
@@ -91,7 +89,7 @@ function Userinfo() {
                     <div className="UpperBox">
                       <div className="ImgandName">
                         <a>
-                          <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.15752-9/367634288_670232271396797_3517587654188272475_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=5mo7xb_RnO8AX--Ue92&_nc_oc=AQmvurROgagcPsjnRKMQjqy-BkaQND1TpJ5idx6LGdV0hMt1KKPCelBdz6IEYOodcv_UBlofxsHGVO2IR0bWdaRb&_nc_ht=scontent.fdad1-3.fna&oh=03_AdSF18jhzDrV4wlkc6-zH4Y0DBIwfKclcQ-d21VHCOGcaA&oe=650DD351" />
+                          <img src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" />
                           {username}
                         </a>
                         <p>{address}</p>
@@ -100,7 +98,7 @@ function Userinfo() {
                     <div className="BoxUnder">
                       <form className="formchange" onSubmit={onSubmit}>
                         <div className="elemetninform">
-                          <label for="username">Tên</label>
+                          <label>Tên</label>
                           <input
                             type="text"
                             name="username"
@@ -109,7 +107,7 @@ function Userinfo() {
                           />
                         </div>
                         <div className="elemetninform">
-                          <label for="username">Số điện thoại</label>
+                          <label>Số điện thoại</label>
                           <input
                             type="text"
                             name="username"
@@ -118,7 +116,7 @@ function Userinfo() {
                           />
                         </div>
                         <div className="elemetninform">
-                          <label for="username">Email</label>
+                          <label>Email</label>
                           <input
                             type="text"
                             name="username"
@@ -127,7 +125,7 @@ function Userinfo() {
                           />
                         </div>
                         <div className="elemetninform">
-                          <label for="username">Địa chỉ</label>
+                          <label>Địa chỉ</label>
                           <input
                             type="text"
                             name="username"
@@ -162,7 +160,7 @@ function Userinfo() {
                     <h3>Thay đổi mật khẩu</h3>
                     <div className="formchange2">
                       <div className="elemetninform">
-                        <label for="">
+                        <label>
                           Mật khẩu cũ<span>*</span>
                         </label>
                         <input
@@ -176,7 +174,7 @@ function Userinfo() {
                         />
                       </div>
                       <div className="elemetninform">
-                        <label for="username">
+                        <label>
                           Mật khẩu mới
                           <span>*{wwordConfirm}</span>
                         </label>
@@ -191,7 +189,7 @@ function Userinfo() {
                         />
                       </div>
                       <div className="elemetninform">
-                        <label for="username">
+                        <label>
                           Xác nhận mật khẩu mới<span>*</span>
                         </label>
                         {wwordConfirm2}

@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import logo from "../imagess/logo.png";
+import React, { useContext, useEffect } from "react";
+import logo from "../imagess/loggo.png";
 import { Link } from "react-router-dom";
 import { Appcontext } from "../Contexxt/Appcontext";
 function Navbars() {
   const { account, setaccoutname } = useContext(Appcontext);
   useEffect(() => {
-    // Kiểm tra nếu có giá trị account trong localStorage
-    const localStorageAccount = localStorage.getItem("account");
+    const localStorageAccount = localStorage.getItem("appear");
     if (localStorageAccount === "true") {
-      setaccoutname(true);
-    } else if (localStorageAccount === "false") {
       setaccoutname(false);
+    } else if (localStorageAccount === "false") {
+      setaccoutname(true);
     }
-  }, []);
+  });
   return (
     <div>
       <header className="head">
@@ -20,12 +19,11 @@ function Navbars() {
           <div className="logo">
             <a href="">
               <img src={logo} alt="logo" />
-              LEARN X2
+              LearN X2
             </a>
           </div>
-
           <div className="slogan">
-            <h1>LEARN BY YOURSELF</h1>
+            <h1>Learn by yourseft</h1>
           </div>
         </div>
         <section className="tab-mainmenu">
@@ -34,26 +32,16 @@ function Navbars() {
               <li>
                 <Link to="/">
                   <i
-                    class="fa-regular fa-circle-question"
+                    className="fa-regular fa-circle-question"
                     style={{ color: "#5C5470" }}
                   ></i>
                   Hỏi & Đáp
                 </Link>
               </li>
-              {/* <li>
-                <Link to="/allcources">
-                  <i
-                    class="fa-regular fa-file-lines"
-                    style={{ color: "#5C5470" }}
-                  ></i>
-                  Giáo Án
-                </Link>
-              </li> */}
-
               <li>
                 <Link to="/introduce">
                   <i
-                    class="fa-solid fa-door-open"
+                    className="fa-solid fa-door-open"
                     style={{ color: "#5C5470" }}
                   ></i>
                   Giới Thiệu
@@ -62,7 +50,7 @@ function Navbars() {
               <li>
                 <Link to="/bookstore">
                   <i
-                    class="fa-solid fa-cart-flatbed"
+                    className="fa-solid fa-cart-flatbed"
                     style={{ color: "#5C5470" }}
                   ></i>
                   Cửa Hàng
@@ -71,7 +59,7 @@ function Navbars() {
               {account && (
                 <li>
                   <Link to="/userinfo">
-                    <i class="fa-regular fa-circle-user"></i>
+                    <i className="fa-regular fa-circle-user"></i>
                     Tài khoản
                   </Link>
                 </li>

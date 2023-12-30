@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import { Appcontext } from "../Contexxt/Appcontext";
 import { Link } from "react-router-dom";
 import { ClassContext } from "../Contexxt/ClassContext";
-
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../StoreRedux/userSlicer";
 export function Creategrpinterfaces() {
-  const { Creategrp, setupdateCLick3 } = useContext(Appcontext);
+  const { setupdateCLick3 } = useContext(Appcontext);
   const clickappear4 = () => {
     setupdateCLick3(true);
   };
@@ -14,26 +16,7 @@ export function Creategrpinterfaces() {
   const [inputcre, updateCre] = useState("");
   const [getlink, setLink] = useState(null);
   const [getnames, setname] = useState([]);
-  const takeLink = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setLink(imageUrl);
-    }
-  };
-  const getvalue = (e) => {
-    updateCre(e.target.value);
-  };
-  const createNew = (event) => {
-    event.preventDefault();
-    const newname = { name: inputcre };
-    if (inputcre.trim() !== "") {
-      setname([newname, ...getnames]);
-    }
-    // setLink("");
-    updateCre("");
-    closeform2();
-  };
+
   return (
     <div className="cre">
       <div>
@@ -41,7 +24,7 @@ export function Creategrpinterfaces() {
           <p>Tạo nhóm để học cùng nhau nhé!!!</p>
           <button className="btngroup" onClick={clickappear4}>
             <a>
-              <i class="fa-solid fa-circle-plus"></i>
+              <i className="fa-solid fa-circle-plus"></i>
               Tạo Nhóm
             </a>
           </button>
@@ -140,112 +123,78 @@ export function Creategrpinterfaces() {
           ))}
         </div>
       </div>
-      {Creategrp && (
-        <div className="group-create">
-          <i
-            className="fa-solid fa-circle-xmark"
-            id="close3"
-            onClick={closeform2}
-          ></i>
-          <form onSubmit={createNew}>
-            <h4
-              style={{
-                margin: "0px",
-                padding: "4px 0",
-                color: "#4285f4",
-                fontSize: "24px",
-                fontWeight: "700",
-                textTransform: "uppercase",
-              }}
-            >
-              TẠO NHÓM
-            </h4>
-            <div className="login-form" id="loginform">
-              <label for="username">Tên Nhóm:</label>
-              <input
-                type="text"
-                // value={inputcre}
-                onChange={getvalue}
-                id="username"
-                name="username"
-                required
-              />
-              <label for="decrip">Ảnh nhóm:</label>
-              <input
-                onChange={takeLink}
-                type="file"
-                id="decrip"
-                placeholder="Hãy thả link ảnh vào đây"
-                required
-              />
-              <label for="decrip">Thành viên:</label>
-              <input
-                type="text"
-                id="decrip"
-                name="decrip"
-                required
-                placeholder="Nhập email của thành viên"
-              />
-            </div>
-            <input id="login-btn" type="submit" value="Tạo Nhóm" />
-          </form>
-        </div>
-      )}
     </div>
   );
 }
-export function Ads() {
-  const { formappear, signupappear, Creategrp, cartappear } =
-    useContext(Appcontext);
-  ///ads appear in college.js
-  const { adsapper } = useContext(ClassContext);
-  return (
-    <div>
-      <div
-        className={`ads ${
-          formappear || signupappear || Creategrp || cartappear || adsapper
-            ? "active"
-            : ""
-        }`}
-      ></div>
-    </div>
-  );
+//submit confirm
+function reducer(state, action) {
+  if (action.type === "username") {
+    return {
+      ...state,
+      username: action.username,
+    };
+  } else if (action.type === "password") {
+    return {
+      ...state,
+      password: action.password,
+    };
+  } else if (action.type === "email") {
+    return {
+      ...state,
+      email: action.email,
+    };
+  } else if (action.type === "clearForm") {
+    return { username: "", password: "", email: "" };
+  }
+  throw new Error("Unknown action.");
+}
+//check loginaccount
+function reducerlogin(state, action) {
+  if (action.type === "email") {
+    return {
+      ...state,
+      email: action.email,
+    };
+  } else if (action.type === "password") {
+    return {
+      ...state,
+      password: action.password,
+    };
+  } else if (action.type === "clearForm") {
+    return { email: "", password: "" };
+  }
+  throw new Error("Unknown action.");
 }
 export function BtnLoginSignup() {
+  const userinfo = useSelector((state) => state.userinfo);
   const { formappear, signupappear, setupdateCLick, setupdateCLick2 } =
     useContext(Appcontext);
   const { setalertactive, setwordalert } = useContext(ClassContext);
-  const { appear, setappear, setaccoutname } = useContext(Appcontext);
-  const [username, setusername] = useState("");
-  const [password, setpassword] = useState("");
+  const { appear, setappear } = useContext(Appcontext);
+  const { user, getuser } = useContext(ClassContext);
+  const [statesignup, dispatch] = useReducer(reducer, {
+    username: "",
+    password: "",
+    email: "",
+  });
+  const [statelogin, dispatchlogin] = useReducer(reducerlogin, {
+    email: "",
+    password: "",
+  });
   useEffect(() => {
     const localappear = localStorage.getItem("appear");
     if (localappear === "false") {
       setappear(false);
     } else setappear(true);
   });
-  const userAccounts = [
-    { namelogin: "trung", passlogin: "123" },
-    { namelogin: "user2", passlogin: "123" },
-    { namelogin: "user3", passlogin: "123" },
-    { namelogin: "user4", passlogin: "123" },
-    { namelogin: "user5", passlogin: "123" },
-    { namelogin: "user6", passlogin: "123" },
-    { namelogin: "user7", passlogin: "123" },
-    { namelogin: "user8", passlogin: "123" },
-    { namelogin: "user9", passlogin: "123" },
-    { namelogin: "user10", passlogin: "123" },
-  ];
-  const handleSubmitlogin = (event) => {
+  async function handleSubmitlogin(event) {
     event.preventDefault();
-    const matchedUser = userAccounts.find(
-      (user) => user.namelogin === username && user.passlogin === password
-    );
-    if (matchedUser) {
-      setpassword("");
-      setusername("");
+    const response = await axios.post("/v1/checkuser", statelogin);
+    if (response.data.message === "success") {
       setappear(false);
       localStorage.setItem("appear", false);
+      getuser(response.data.dataUser);
+      // useDispatch(updateUser(response.data.dataUser));
       setupdateCLick(false);
       ///alert message
       setalertactive(true);
@@ -253,28 +202,36 @@ export function BtnLoginSignup() {
       setTimeout(() => {
         setalertactive(false);
       }, 3000);
-      setaccoutname(true);
-      localStorage.setItem("account", true);
     } else {
       setalertactive(true);
       setwordalert("Tên đăng nhập hoặc mật khẩu không đúng.");
+      dispatchlogin({ type: "clearForm" });
       setTimeout(() => {
         setalertactive(false);
       }, 3000);
     }
-  };
-  const clickappear = () => {
-    setupdateCLick(true);
-    setupdateCLick2(false);
-  };
-  const closeform = () => {
-    setupdateCLick(false);
-    setupdateCLick2(false);
-  };
-  const clickappear2 = () => {
-    setupdateCLick(false);
-    setupdateCLick2(true);
-  };
+  }
+  ///function ssubmit register
+  async function signupFormSubmit(e) {
+    e.preventDefault();
+    const result = await axios.post("/v1/insertUser", statesignup);
+    switch (result.data.message) {
+      case "success":
+        setupdateCLick2(false);
+        console.log("error");
+        localStorage.setItem("appear", false);
+        window.location.reload();
+        break;
+      case "error":
+        setalertactive(true);
+        setwordalert("Tên người dùng đã tồn tại");
+        setTimeout(() => {
+          setalertactive(false);
+        }, 3000);
+        console.log("error");
+        break;
+    }
+  }
   return (
     <div>
       {appear && (
@@ -291,85 +248,96 @@ export function BtnLoginSignup() {
             </p>
           </div>
           <div className="login">
-            <button id="btn" onClick={clickappear}>
+            <button
+              id="btn"
+              onClick={() => {
+                setupdateCLick(true);
+                setupdateCLick2(false);
+              }}
+            >
               Đăng nhập
             </button>
-            <button id="btn2" onClick={clickappear2}>
+            <button
+              id="btn2"
+              onClick={() => {
+                setupdateCLick(false);
+                setupdateCLick2(true);
+              }}
+            >
               Đăng kí
             </button>
           </div>
         </div>
       )}
-
       {formappear && (
         <div className="Page-login">
           <i
             className="fa-solid fa-circle-xmark"
-            onClick={closeform}
+            onClick={() => {
+              setupdateCLick(false);
+              setupdateCLick2(false);
+            }}
             id="close"
           ></i>
-          <form className="loginform" onSubmit={handleSubmitlogin}>
-            <h4
-              style={{
-                margin: "0px",
-                padding: "4px 0",
-                color: "#4285f4",
-                fontSize: "24px",
-                fontWeight: "700",
-                textTransform: "uppercase",
-              }}
-            >
-              ĐĂNG NHẬP
-            </h4>
-            <div className="login-form" id="loginform">
-              <label for="username">Tên đăng nhập:</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={(e) => setusername(e.target.value)}
-                required
-              />
-              <label for="password">Mật khẩu:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setpassword(e.target.value)}
-                required
+          <div className="containform-login">
+            <div className="Picture-Login">
+              <img
+                src="https://static.vecteezy.com/system/resources/previews/024/346/428/original/3d-cartoon-group-of-little-children-on-transparent-background-generative-ai-png.png"
+                alt=""
               />
             </div>
-            <input
-              id="login-btn"
-              className="loginbtnnn"
-              type="submit"
-              value="Đăng nhập"
-            />
-          </form>
-          <div className="NOacc">
-            <p>
-              Chưa có tài khoản?{" "}
-              <span id="movetosignup" onClick={clickappear2}>
-                Đăng kí
-              </span>
-            </p>
+            <div>
+              <form className="loginform" onSubmit={handleSubmitlogin}>
+                <h4>Hello, Chào mừng quay trở lại</h4>
+                <div className="login-form" id="loginform">
+                  <label>Tên đăng nhập:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    onChange={(e) =>
+                      dispatchlogin({
+                        type: "email",
+                        email: e.target.value,
+                      })
+                    }
+                    required
+                  />
+                  <label>Mật khẩu:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    onChange={(e) =>
+                      dispatchlogin({
+                        type: "password",
+                        password: e.target.value,
+                      })
+                    }
+                    required
+                  />
+                </div>
+                <input
+                  id="login-btn"
+                  className="loginbtnnn"
+                  type="submit"
+                  value="Đăng nhập"
+                />
+              </form>
+              <div className="NOacc">
+                <p>
+                  Chưa có tài khoản?
+                  <span
+                    id="movetosignup"
+                    onClick={() => {
+                      setupdateCLick(false);
+                      setupdateCLick2(true);
+                    }}
+                  >
+                    Đăng kí
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
-          {/* <div className="other-option">
-            <ul>
-              <li>
-                <a href="">
-                  <i className="fa-brands fa-facebook fa-2xl"></i>
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <i className="fa-brands fa-google-plus fa-2xl"></i>
-                </a>
-              </li>
-            </ul>
-          </div> */}
         </div>
       )}
       {signupappear && (
@@ -377,37 +345,56 @@ export function BtnLoginSignup() {
           <i
             className="fa-solid fa-circle-xmark"
             id="close2"
-            onClick={closeform}
+            onClick={() => {
+              setupdateCLick(false);
+              setupdateCLick2(false);
+            }}
           ></i>
-          <form className="signupform">
-            <h4
-              style={{
-                margin: "0px",
-                padding: "4px 0",
-                color: "#4285f4",
-                fontSize: "24px",
-                fontWeight: "700",
-                textTransform: "uppercase",
-              }}
-            >
-              ĐĂNG KÍ
-            </h4>
+          <form onSubmit={signupFormSubmit} className="signupform">
+            <h4>ĐĂNG KÍ</h4>
             <div className="login-form" id="signupform">
-              <label for="username2">Tên đăng nhập:</label>
-              <input type="text" id="username2" name="username2" required />
-              <label for="password2">Mật khẩu:</label>
-              <input type="password" id="password2" name="password2" required />
-              <label for="password3">Xác nhận pass:</label>
-              <input type="password" id="password3" name="password3" required />
-              <label for="password4">Email:</label>
-              <input type="email" id="email" name="email" required />
+              <label>Tên người dùng:</label>
+              <input
+                onChange={(e) =>
+                  dispatch({ type: "username", username: e.target.value })
+                }
+                type="text"
+                id="username2"
+                required
+              />
+              <label>Mật khẩu:</label>
+              <input
+                onChange={(e) =>
+                  dispatch({ type: "password", password: e.target.value })
+                }
+                type="password"
+                id="password2"
+                required
+              />
+              <label>Xác nhận pass:</label>
+              <input type="password" id="password3" required />
+              <label>Email:</label>
+              <input
+                onChange={(e) =>
+                  dispatch({ type: "email", email: e.target.value })
+                }
+                type="email"
+                id="email"
+                required
+              />
             </div>
             <input id="login-btn2" type="submit" value="Đăng kí" />
           </form>
           <div className="Hasacc">
             <p>
               Đã có tài khoản{" "}
-              <span id="btnmovetologin" onClick={clickappear}>
+              <span
+                id="btnmovetologin"
+                onClick={() => {
+                  setupdateCLick(true);
+                  setupdateCLick2(false);
+                }}
+              >
                 Đăng nhập
               </span>
             </p>
@@ -439,7 +426,7 @@ export function BtnLogout() {
       <Link to="/">
         {" "}
         <p onClick={Logoutclick}>
-          <i class="fa-solid fa-right-from-bracket"></i>
+          <i className="fa-solid fa-right-from-bracket"></i>
           Log out
         </p>
       </Link>
@@ -454,7 +441,7 @@ export function Alertactice() {
         <div className="alertword">
           <p>{wordalert}</p>
           <a onClick={() => setalertactive(false)}>
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </a>
         </div>
       </div>
