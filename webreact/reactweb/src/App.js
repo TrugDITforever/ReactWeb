@@ -6,7 +6,7 @@ import Test from "./components/testforcouces";
 import Allclass from "./components/class1";
 import Test9to10 from "./components/test9to10";
 import CollegeTest from "./components/college.js";
-import BookStrore from "./components/bookstore";
+import BookStrore from "./components/bookstore" ;
 import Cartpage from "./components/Cartpage";
 import Introduce from "./components/introduce";
 import Userinfo from "./components/userinfo";

@@ -300,7 +300,7 @@ export function Tablecart() {
       setCartCount((prevCount) => prevCount - 1);
       setCartItemsShop(updatecart);
       setCartItems(updatecart);
-    }
+    } 
   };
   const deleteCartItems = (proID) => {
     const filterDelete = cartItemsshop.filter((item) => item.id !== proID.id);
